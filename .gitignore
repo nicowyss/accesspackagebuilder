@@ -3,6 +3,9 @@
 
 ### dotenv ###
 .env
+node_modules/
+bin/
+
 
 ### Node ###
 # Logs
