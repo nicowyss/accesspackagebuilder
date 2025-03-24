@@ -1,5 +1,5 @@
 require('dotenv').config();
-require('dotenv').config({ path: './secrets.env' });
+require('dotenv').config({ path: './.env' });
 require('@azure/opentelemetry-instrumentation-azure-sdk');
 
 var createError = require('http-errors');

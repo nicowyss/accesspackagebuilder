@@ -13,6 +13,21 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18  # Adjust to your Node.js version
+
+    - name: Install dependencies
+      run: npm install  # Installs node_modules (excluded from GitHub)
+
+    - name: Set up environment variables
+      run: |
+        echo "AZURE_CLIENT_ID=${{ secrets.AZURE_CLIENT_ID }}" >> $GITHUB_ENV
+        echo "AZURE_CLIENT_SECRET=${{ secrets.AZURE_CLIENT_SECRET }}" >> $GITHUB_ENV
+        echo "APPLICATIONINSIGHTS_CONNECTION_STRING=${{ secrets.APPLICATIONINSIGHTS_CONNECTION_STRING }}" >> $GITHUB_ENV
+        echo "HOST=${{ secrets.HOST }}" >> $GITHUB_ENV
+    
     - name: Login to Azure
       uses: azure/login@v1
       with:
@@ -21,6 +36,6 @@ jobs:
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
-        app-name: "your-app-name"
+        app-name: "accesspackagebuilder"
         slot-name: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
-        package: .
+        package: .  # Deploys the entire app

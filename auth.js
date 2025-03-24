@@ -1,4 +1,4 @@
-require("dotenv").config({ path: "./secrets.env" });
+require("dotenv").config({ path: "./.env" });
 const msal = require("@azure/msal-node");
 const axios = require("axios"); // To make HTTP requests
 const hljs = require("highlight.js");
