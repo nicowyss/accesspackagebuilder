@@ -88,8 +88,4 @@ app.use(function (err, req, res, next) {
 // Serve static files from the "public" directory
 app.use(express.static('public'));
 
-// Set the port
-const port = process.env.PORT || 3000;
-app.set('port', port);
-
 module.exports = app;
