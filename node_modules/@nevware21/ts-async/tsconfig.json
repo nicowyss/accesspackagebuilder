@@ -1,0 +1,10 @@
+{
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "target": "es5",
+        "declaration": true,
+        "declarationDir": "./build/types",
+        "removeComments": false,
+        "outDir": "./build/es5"
+    }
+}

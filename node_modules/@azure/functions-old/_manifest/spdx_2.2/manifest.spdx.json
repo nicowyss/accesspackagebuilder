@@ -1,0 +1,784 @@
+{
+  "files": [
+    {
+      "fileName": "./dist/azure-functions.min.js",
+      "SPDXID": "SPDXRef-File--dist-azure-functions.min.js-70E86EB59601169CAFBE9920B338138FC19F4FA0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "cd14635b1ea2b97d9a246746c1037362f14aa999859d353e97feb7a3a1718e8f"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "70e86eb59601169cafbe9920b338138fc19f4fa0"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./LICENSE",
+      "SPDXID": "SPDXRef-File--LICENSE-14CB404E9DE5F2B618AD67DDA908AF2452A4B2B4",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "9fa73cb72fb654d029c9214f0e3eec32c301a0c23be71b50fe3910e61553fa34"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "14cb404e9de5f2b618ad67dda908af2452a4b2b4"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./package.json",
+      "SPDXID": "SPDXRef-File--package.json-CFCD383C229A0A33FCAB3AE7C3B3934FF6EA9655",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "0203120ef8a8335958446c4585864b6738347a7741257f15480df63face630a2"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "cfcd383c229a0a33fcab3ae7c3b3934ff6ea9655"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/constants.ts",
+      "SPDXID": "SPDXRef-File--src-constants.ts-E419672B9A0629A522105448726CC42BBCC6A2AF",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "62a4accc432c8d8099bf8497fc331994b41f1c7cf201f13e6aa0905145743665"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "e419672b9a0629a522105448726cc42bbcc6a2af"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/errors.ts",
+      "SPDXID": "SPDXRef-File--src-errors.ts-A5E15F9D5F5BF168868FE16A1B1EFA0AC8D009A1",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "356f9b545a77ece5d7659fb759c02ff38e88c888a49273a6a27b37a327620439"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "a5e15f9d5f5bf168868fe16a1b1efa0ac8d009a1"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/converters/BindingConverters.ts",
+      "SPDXID": "SPDXRef-File--src-converters-BindingConverters.ts-4A1F3E8A11A7B43187BE8D6FB198B91CBDCF7229",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "af81044f110f458b13cb208924544483183726b292b89864d75b7f9c08448b9c"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "4a1f3e8a11a7b43187be8d6fb198b91cbdcf7229"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/converters/RpcHttpConverters.ts",
+      "SPDXID": "SPDXRef-File--src-converters-RpcHttpConverters.ts-2829D3953DAD13910EC66FA156A580A4F8DFA273",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "348f3c2e5af4e1f3c3c2c80ace1ddece99ea13f7c34f5d6443679dd83d8179d9"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "2829d3953dad13910ec66fa156a580a4f8dfa273"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/http/Request.ts",
+      "SPDXID": "SPDXRef-File--src-http-Request.ts-4DCFED2A8F50F1B1982FFD578FFB4A21F9659215",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "1d4d5cecb81618518b01a2aeea7f31711309fe9180b610d8cbba02cbf2c2f69b"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "4dcfed2a8f50f1b1982ffd578ffb4a21f9659215"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/parsers/parseMultipartForm.ts",
+      "SPDXID": "SPDXRef-File--src-parsers-parseMultipartForm.ts-41087F875818034B2EC26B9753ADA670A0888CBD",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "1e7f465facce07367e9797d1016ab016e0e295c30f88baf9f05706723da5a78e"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "41087f875818034b2ec26b9753ada670a0888cbd"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/utils/util.ts",
+      "SPDXID": "SPDXRef-File--src-utils-util.ts-B666C0D023DE87615D101367AAD897EAFC692B3F",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "6cf132c958c9b59c0f50372abd16961981a3010e0f8fa16801ea295830b802f0"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "b666c0d023de87615d101367aad897eafc692b3f"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./types/http.d.ts",
+      "SPDXID": "SPDXRef-File--types-http.d.ts-0715B884769DEC086F1B2E2D6B6DB99B2536F110",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "8d87ecff5f9d70740e1ed6fff7e7df8184d432fdc282d83599fd99c313e4bf9a"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0715b884769dec086f1b2e2d6b6db99b2536f110"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./dist/azure-functions.js",
+      "SPDXID": "SPDXRef-File--dist-azure-functions.js-5960AAC3EF54CF4C2667CF81B53040E0870ED45C",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "fb58eaa091571f4b27dca4c0abad782d404f2ba3523cd46d5787f6353de22765"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "5960aac3ef54cf4c2667cf81b53040e0870ed45c"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/index.ts",
+      "SPDXID": "SPDXRef-File--src-index.ts-5D80F38735A075C1CF48944B6C0874FBEB13194F",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "9ed483c2c5aff0c4611c52694f897151da20ba7e77f1827f47679ddad0883cf3"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "5d80f38735a075c1cf48944b6c0874fbeb13194f"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./dist/azure-functions.js.map",
+      "SPDXID": "SPDXRef-File--dist-azure-functions.js.map-42A30E5CF8F442F7399649E5018A54E329FE17B8",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "6ec45739507740fa535aeccf7b81aaacc761e59ec0674314e4ba1afeaf0216f3"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "42a30e5cf8f442f7399649e5018a54e329fe17b8"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/parsers/parseForm.ts",
+      "SPDXID": "SPDXRef-File--src-parsers-parseForm.ts-0C5B0A9FD97B6080C5484782D59F18D867AA7907",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "53d4d6e6cdaad05a53edfd971f3b60ebfbf03e1002f0a9f283e3b09533471a87"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0c5b0a9fd97b6080c5484782d59f18d867aa7907"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./types/timer.d.ts",
+      "SPDXID": "SPDXRef-File--types-timer.d.ts-30568EA8963367C127F87B7D5E29468ED1802773",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "79136e02501be24ed04ebafb5e31a43432c473ebfce05d8b62a47ce91a6d34ff"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "30568ea8963367c127f87b7d5e29468ed1802773"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/InvocationModel.ts",
+      "SPDXID": "SPDXRef-File--src-InvocationModel.ts-9ABC52D6C5A4DEA4C2FED786415A0CF58DB20A03",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "3b8570d6f4c7648977dd339f4e43e6ae1b3d420ce489fe89b81cd7d16b428642"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "9abc52d6c5a4dea4c2fed786415a0cf58db20a03"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./NOTICE.html",
+      "SPDXID": "SPDXRef-File--NOTICE.html-248AFB41CE25A073DFD9C301AFCC8E36B8F09551",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "688ba11707547792129b8611a5f4d97b8108ced977009274750e47e197fb92e4"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "248afb41ce25a073dfd9c301afcc8e36b8f09551"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./dist/azure-functions.min.js.map",
+      "SPDXID": "SPDXRef-File--dist-azure-functions.min.js.map-7B0282D2C541821EA8B65A7C7E3C1C8BDDB8D4F1",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "941e5367a92b3c949c2fdee58958aa5a2fd0446e3792f2a8e1de86134fc12247"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "7b0282d2c541821ea8b65a7c7e3c1c8bddb8d4f1"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./README.md",
+      "SPDXID": "SPDXRef-File--README.md-32D6D2DFA28FCE540EAE1309DE307858AFC9AE48",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "72c860a95a93aa518a30fce7f6cb76c34a88c35d7dc2e6b5bdd2c4b33a57cbde"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "32d6d2dfa28fce540eae1309de307858afc9ae48"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/parsers/parseHeader.ts",
+      "SPDXID": "SPDXRef-File--src-parsers-parseHeader.ts-D3CB49330115A9E0ACBB9B52CBD4F440D88968B3",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "293fee17fefc5d56ca196b57695b1c96c54bbad721b625d9a4382b5fadf8a1ee"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "d3cb49330115a9e0acbb9b52cbd4f440d88968b3"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/Context.ts",
+      "SPDXID": "SPDXRef-File--src-Context.ts-F2FD656EA2EB77F4B683F4A0D82A9A149C67E6B8",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "56199cd4e3683464a43480ee86f3b05b31da2fb09e4f12516dd1fb23e22bf2eb"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "f2fd656ea2eb77f4b683f4a0d82a9a149c67e6b8"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/converters/RpcConverters.ts",
+      "SPDXID": "SPDXRef-File--src-converters-RpcConverters.ts-A2C5DF2B4E35B7360688364CF8817C551151F202",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "f656285d020acbc98d470b3d4c45df9bf6e8d71d62858f8cfaeee1c21bda9404"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "a2c5df2b4e35b7360688364cf8817c551151f202"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/FunctionInfo.ts",
+      "SPDXID": "SPDXRef-File--src-FunctionInfo.ts-49E92725D1C10E9745E49C185B3E109E84E86908",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "8d65adf7b0532a651e7d6b50b1e4f51f870987d10efaddee710518ad2eae325e"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "49e92725d1c10e9745e49c185b3e109e84e86908"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/http/extractHttpUserFromHeaders.ts",
+      "SPDXID": "SPDXRef-File--src-http-extractHttpUserFromHeaders.ts-83D6B60D4D0C79B5F679AB7E299C229A81CE3C9D",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "9c75d3e9258b05aed2954763af6324ad7e54dfb96850f7ec071d19bad1fefab8"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "83d6b60d4d0c79b5f679ab7e299c229a81ce3c9d"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/utils/nonNull.ts",
+      "SPDXID": "SPDXRef-File--src-utils-nonNull.ts-6DBAA484B3EBC6C8A3F764FBA9140C4D235B2576",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "64ff5ad425ac5a58232da2560ad9ed528aaebd4f57e18f18cda7b0278fb7875d"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "6dbaa484b3ebc6c8a3f764fba9140c4d235b2576"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./src/http/Response.ts",
+      "SPDXID": "SPDXRef-File--src-http-Response.ts-BA83AF8A80DF14E9F6358F537F03741A13475AB9",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "7fe66856681041dfe760189b6bede5f068e47edb0b0cca769d035525d7f29d1c"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "ba83af8a80df14e9f6358f537f03741a13475ab9"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./types/Context.d.ts",
+      "SPDXID": "SPDXRef-File--types-Context.d.ts-1B56A6400EEAAFB089F7C7B172483ABE8E004BD8",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e46aa4b05bb31664e775a437f2490daa32f133c1605c9fed3ac12e8c35b23991"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "1b56a6400eeaafb089f7c7b172483abe8e004bd8"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./types/index.d.ts",
+      "SPDXID": "SPDXRef-File--types-index.d.ts-3C5BE1EC98F825EE5C044DD8A3903DB4C5521417",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "ec76173d16ec1d7785a7d254bebd0b8744273d7a4e8662f56cf5fad46226ccf7"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "3c5be1ec98f825ee5c044dd8a3903db4c5521417"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": [
+        "NOASSERTION"
+      ],
+      "copyrightText": "NOASSERTION"
+    }
+  ],
+  "packages": [
+    {
+      "name": "iconv-lite",
+      "SPDXID": "SPDXRef-Package-258FE309BEE2AEAB9851C2B85FE2F1B65229406867D180D7F84D975D6DDE8134",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoFromFiles": [
+        "NOASSERTION"
+      ],
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "0.6.3",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:npm/iconv-lite@0.6.3"
+        }
+      ],
+      "supplier": "Organization: Alexander Shtuchkin (ashtuchkin@gmail.com)"
+    },
+    {
+      "name": "long",
+      "SPDXID": "SPDXRef-Package-044336899C3AD719572161F32356DFBD386B721EFA99ECA36B059C7A2374DA68",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoFromFiles": [
+        "NOASSERTION"
+      ],
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "4.0.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:npm/long@4.0.0"
+        }
+      ],
+      "supplier": "Organization: Daniel Wirtz (dcode@dcode.io)"
+    },
+    {
+      "name": "uuid",
+      "SPDXID": "SPDXRef-Package-600583B2E250C50BD2B3DF84DD1393CD34F6DFD02BEB03AA9530C9FA393BDF96",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoFromFiles": [
+        "NOASSERTION"
+      ],
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "8.3.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:npm/uuid@8.3.0"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "Azure Pipelines Hosted Image win19",
+      "SPDXID": "SPDXRef-Package-077E5FBE67402BB1BEE96985940D44A5E5CD472E956500A45CBF18090F9A36E8",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoFromFiles": [
+        "NOASSERTION"
+      ],
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "20230314.1",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "https://github.com/actions/virtual-environments"
+        }
+      ],
+      "supplier": "Microsoft/GitHub"
+    },
+    {
+      "name": "fsevents",
+      "SPDXID": "SPDXRef-Package-EEEEEE210EC980714C74E979E40F36ED52F648607F8D185171F56D224912356C",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoFromFiles": [
+        "NOASSERTION"
+      ],
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.3.2",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:npm/fsevents@2.3.2"
+        }
+      ],
+      "supplier": "NOASSERTION"
+    },
+    {
+      "name": "safer-buffer",
+      "SPDXID": "SPDXRef-Package-DBA0EACCA85A46E91A7567F20D60695AF5D117996500EFA78FD8F82CB177F801",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoFromFiles": [
+        "NOASSERTION"
+      ],
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "2.1.2",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:npm/safer-buffer@2.1.2"
+        }
+      ],
+      "supplier": "Organization: Nikita Skovoroda (chalkerx@gmail.com)"
+    },
+    {
+      "name": "Azure Functions Node.js Framework",
+      "SPDXID": "SPDXRef-RootPackage",
+      "downloadLocation": "NOASSERTION",
+      "packageVerificationCode": {
+        "packageVerificationCodeValue": "3ba4d700a75af451b359fa88b80248cbffc6fe2c"
+      },
+      "filesAnalyzed": true,
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoFromFiles": [
+        "NOASSERTION"
+      ],
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "121465",
+      "supplier": "Organization: Microsoft",
+      "hasFiles": [
+        "SPDXRef-File--types-index.d.ts-3C5BE1EC98F825EE5C044DD8A3903DB4C5521417",
+        "SPDXRef-File--src-http-Response.ts-BA83AF8A80DF14E9F6358F537F03741A13475AB9",
+        "SPDXRef-File--src-FunctionInfo.ts-49E92725D1C10E9745E49C185B3E109E84E86908",
+        "SPDXRef-File--README.md-32D6D2DFA28FCE540EAE1309DE307858AFC9AE48",
+        "SPDXRef-File--src-utils-nonNull.ts-6DBAA484B3EBC6C8A3F764FBA9140C4D235B2576",
+        "SPDXRef-File--src-converters-RpcConverters.ts-A2C5DF2B4E35B7360688364CF8817C551151F202",
+        "SPDXRef-File--dist-azure-functions.min.js.map-7B0282D2C541821EA8B65A7C7E3C1C8BDDB8D4F1",
+        "SPDXRef-File--types-Context.d.ts-1B56A6400EEAAFB089F7C7B172483ABE8E004BD8",
+        "SPDXRef-File--src-http-extractHttpUserFromHeaders.ts-83D6B60D4D0C79B5F679AB7E299C229A81CE3C9D",
+        "SPDXRef-File--src-Context.ts-F2FD656EA2EB77F4B683F4A0D82A9A149C67E6B8",
+        "SPDXRef-File--NOTICE.html-248AFB41CE25A073DFD9C301AFCC8E36B8F09551",
+        "SPDXRef-File--src-parsers-parseHeader.ts-D3CB49330115A9E0ACBB9B52CBD4F440D88968B3",
+        "SPDXRef-File--src-InvocationModel.ts-9ABC52D6C5A4DEA4C2FED786415A0CF58DB20A03",
+        "SPDXRef-File--dist-azure-functions.js.map-42A30E5CF8F442F7399649E5018A54E329FE17B8",
+        "SPDXRef-File--types-timer.d.ts-30568EA8963367C127F87B7D5E29468ED1802773",
+        "SPDXRef-File--src-parsers-parseForm.ts-0C5B0A9FD97B6080C5484782D59F18D867AA7907",
+        "SPDXRef-File--src-index.ts-5D80F38735A075C1CF48944B6C0874FBEB13194F",
+        "SPDXRef-File--dist-azure-functions.js-5960AAC3EF54CF4C2667CF81B53040E0870ED45C",
+        "SPDXRef-File--types-http.d.ts-0715B884769DEC086F1B2E2D6B6DB99B2536F110",
+        "SPDXRef-File--src-http-Request.ts-4DCFED2A8F50F1B1982FFD578FFB4A21F9659215",
+        "SPDXRef-File--src-errors.ts-A5E15F9D5F5BF168868FE16A1B1EFA0AC8D009A1",
+        "SPDXRef-File--package.json-CFCD383C229A0A33FCAB3AE7C3B3934FF6EA9655",
+        "SPDXRef-File--src-utils-util.ts-B666C0D023DE87615D101367AAD897EAFC692B3F",
+        "SPDXRef-File--src-converters-RpcHttpConverters.ts-2829D3953DAD13910EC66FA156A580A4F8DFA273",
+        "SPDXRef-File--src-constants.ts-E419672B9A0629A522105448726CC42BBCC6A2AF",
+        "SPDXRef-File--LICENSE-14CB404E9DE5F2B618AD67DDA908AF2452A4B2B4",
+        "SPDXRef-File--src-parsers-parseMultipartForm.ts-41087F875818034B2EC26B9753ADA670A0888CBD",
+        "SPDXRef-File--src-converters-BindingConverters.ts-4A1F3E8A11A7B43187BE8D6FB198B91CBDCF7229",
+        "SPDXRef-File--dist-azure-functions.min.js-70E86EB59601169CAFBE9920B338138FC19F4FA0"
+      ]
+    }
+  ],
+  "externalDocumentRefs": [],
+  "relationships": [
+    {
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "spdxElementId": "SPDXRef-DOCUMENT"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-DBA0EACCA85A46E91A7567F20D60695AF5D117996500EFA78FD8F82CB177F801",
+      "spdxElementId": "SPDXRef-RootPackage"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-EEEEEE210EC980714C74E979E40F36ED52F648607F8D185171F56D224912356C",
+      "spdxElementId": "SPDXRef-RootPackage"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-077E5FBE67402BB1BEE96985940D44A5E5CD472E956500A45CBF18090F9A36E8",
+      "spdxElementId": "SPDXRef-RootPackage"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-600583B2E250C50BD2B3DF84DD1393CD34F6DFD02BEB03AA9530C9FA393BDF96",
+      "spdxElementId": "SPDXRef-RootPackage"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-044336899C3AD719572161F32356DFBD386B721EFA99ECA36B059C7A2374DA68",
+      "spdxElementId": "SPDXRef-RootPackage"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package-258FE309BEE2AEAB9851C2B85FE2F1B65229406867D180D7F84D975D6DDE8134",
+      "spdxElementId": "SPDXRef-RootPackage"
+    }
+  ],
+  "spdxVersion": "SPDX-2.2",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "Azure Functions Node.js Framework 121465",
+  "documentNamespace": "https://sbom.microsoft/1:vB_F0XdED0q5n_yQEwCaWA:kgyn5ihBn0OAEjgv541jlg/145:121465/BanPQy1lLk-YCviSjp3QqA",
+  "creationInfo": {
+    "created": "2023-03-23T21:48:11Z",
+    "creators": [
+      "Organization: Microsoft",
+      "Tool: Microsoft.SBOMTool-0.3.3"
+    ]
+  },
+  "documentDescribes": [
+    "SPDXRef-RootPackage"
+  ]
+}
