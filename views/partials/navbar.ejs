@@ -1,0 +1,52 @@
+<nav class="sidebar">
+    <div class="logo">
+      <img src="/images/logo.png" alt="Logo" />
+    </div>
+    <h2>Microsoft Entra ID Identity Governance</h2>
+    <ul>
+      <li><a href="/success">Instructions</a></li>
+      <li><a href="/overview">Step 1: Data Quality</a></li>
+      <p class="nav-group-label">Access Packages</p>
+      <hr class="nav-group-divider" />
+      <li><a href="/builder">Step 2: Access Package Builder</a></li>
+      <li>
+        <a href="/buildermanual">Step 2.1: Access Package Builder (Manual)</a>
+      </li>
+      <li><a href="/deploy">Step 3: Deployment Guide</a></li>
+      <!-- <p class="nav-group-label">Reports</p>
+      <hr class="nav-group-divider" />
+      <li><a href="/guestaccess">Guest User Access Control</a></li> -->
+      <hr class="nav-group-divider" /> 
+      <li><a href="/nextSteps">Next Steps!</a></li>
+    </ul>
+    <button id="refreshButton">Refresh Data</button>
+    <script>
+      // Add this JavaScript to handle the button click and refresh the page
+      document
+        .getElementById("refreshButton")
+        .addEventListener("click", function () {
+          location.reload(); // Refresh the page
+        });
+    </script>
+    <!-- User Profile Section -->
+    <div class="user-profile">
+      <button id="userProfileToggle" class="user-profile-btn">
+        <img src="/images/user.png" alt="User Icon" class="user-icon" />
+        <span id="loggedInUser"><%= displayName %></span>
+        <i class="fa fa-caret-up"></i>
+      </button>
+      <div id="userProfileDropdown" class="user-profile-dropdown">
+        <h5>
+          Tenant ID:
+          <p><%= tenantId %></p>
+        </h5>
+        <h5>
+          UserPrincipalName:
+          <p><%= userPrincipalName %></p>
+        </h5>
+        <a href="/logout" class="logout-link">Logout</a>
+      </div>
+    </div>
+    <p class="copyright-text">© Nico Wyss</p>
+  </nav>
+  

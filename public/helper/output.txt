@@ -1,0 +1,20 @@
+2025-02-12 08:11:57 - 🚀 Starting script for user: nico.onpremise@cloudfil.ch
+2025-02-12 08:11:57 - ✅ User Found: Nico Wyss (ADDS)
+2025-02-12 08:11:57 -    🏢 Company: cloudfil.ch
+2025-02-12 08:11:57 -    🏛️ Department: Digital Transformation
+2025-02-12 08:11:57 - -------------------------------------
+2025-02-12 08:11:57 - 
+🔹 Assigning Default Access Packages...
+2025-02-12 08:11:57 -    ✅ Successfully added user to group: op-group1
+2025-02-12 08:11:58 - 
+🔹 Assigning Company Access Packages...
+2025-02-12 08:11:58 -    ✅ Successfully added user to group: op-group2
+2025-02-12 08:11:58 - 
+🔹 Assigning Department Access Packages...
+2025-02-12 08:11:58 -    ✅ Successfully added user to group: op-group3
+2025-02-12 08:11:58 - 
+🎯 Processing complete!
+2025-02-12 08:11:58 - ✅ Successfully added to 3 groups.
+2025-02-12 08:11:58 - ℹ️ Already in 0 groups.
+2025-02-12 08:11:58 - ❌ Failed to add to 0 groups.
+2025-02-12 08:11:58 - 🎉 SUCCESS: User assigned to all required groups!

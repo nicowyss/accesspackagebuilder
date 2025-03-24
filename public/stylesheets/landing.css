@@ -1,0 +1,261 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: white; /* White background color */
+  }
+  
+  /* Header Style */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white; /* Remove any background color */
+    border-radius: 30px; /* Slightly rounded edges */
+    padding: 10px 40px; /* Padding for the oval shape */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Gray 3D shadow effect */
+    margin: 20px auto;
+    width: 80%; /* Adjust the width as needed */
+    max-width: 1000px;
+  }
+  
+  /* Logo Styling */
+  .logo img {
+    height: 50px; /* Adjust the logo size */
+  }
+  
+  /* Custom Button Styling (same as #refreshButton) */
+  .login-btn {
+    background: linear-gradient(to right, #04D367, #347DFE); /* Updated colors */
+    border: 0;
+    border-radius: 12px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 2.5;
+    outline: transparent;
+    padding: 0 1rem;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow 0.2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+  }
+  
+  .login-btn:not([disabled]):focus {
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5), 
+                -0.125rem -0.125rem 1rem rgba(4, 211, 103, 0.5), 
+                0.125rem 0.125rem 1rem rgba(52, 125, 254, 0.5); /* Adjusted colors */
+  }
+  
+  .login-btn:not([disabled]):hover {
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5), 
+                -0.125rem -0.125rem 1rem rgba(4, 211, 103, 0.5), 
+                0.125rem 0.125rem 1rem rgba(52, 125, 254, 0.5); /* Adjusted colors */
+  }
+  
+  /* Body and HTML Setup for full height */
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-image: url('/images/bck-landing.png');
+    background-size: cover; /* Ensures the image covers the whole page */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-position: center; /* Centers the image */
+  }
+  
+ /* Title Section */
+.title-section {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically within its container */
+    margin-top: 20px; /* Adds space between header and title */
+    padding: 20px 0;  /* Adds some padding around the title */
+  }
+  
+  /* Big Title Styling */
+  .big-title {
+    font-size: 4rem; /* Large font size */
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 2px;
+    line-height: 1.2;
+  }
+  
+ /* Slogan Section */
+ .slogan-section {
+  text-align: center;
+}
+
+.slogan-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #347dfe;
+  margin-bottom: 20px;
+}
+
+.slogan-content p {
+  font-size: 1.2rem;
+  color: #333;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.slogan-content p strong {
+  color: #04d367;
+}
+
+  
+  .slogan-text {
+    font-size: 1.5rem;  /* Smaller font size for slogan */
+    font-weight: 400;
+    text-align: center;
+    color: #666; /* Lighter color for the slogan */
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    max-width: 800px;  /* Limits the width for readability */
+  }
+  
+  /* Try it Free Button Section */
+.button-section {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    margin-top: 20px; /* Space between slogan and button */
+    padding: 20px 0;
+  }
+  
+  .try-btn {
+    background: linear-gradient(to right, #04D367, #347DFE); /* Updated colors */
+    border: 0;
+    border-radius: 12px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 3;
+    outline: transparent;
+    padding: 0 2rem;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow 0.2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+  }
+  
+  .try-btn:not([disabled]):focus {
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5), 
+                -0.125rem -0.125rem 1rem rgba(4, 211, 103, 0.5), 
+                0.125rem 0.125rem 1rem rgba(52, 125, 254, 0.5);
+  }
+  
+  .try-btn:not([disabled]):hover {
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5), 
+                -0.125rem -0.125rem 1rem rgba(4, 211, 103, 0.5), 
+                0.125rem 0.125rem 1rem rgba(52, 125, 254, 0.5);
+  }
+  
+  /* Make the title, slogan, and button responsive */
+  @media (max-width: 1024px) {
+    .header {
+        padding: 10px 20px;
+        width: 90%;
+    }
+
+    .big-title {
+        font-size: 3.5rem;
+    }
+
+    .slogan-text {
+        font-size: 1.3rem;
+    }
+
+    .try-btn {
+        font-size: 18px;
+        padding: 1rem 2rem;
+    }
+}
+
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column; /* Stacks header elements on small screens */
+      padding: 15px;
+      width: 90%;
+  }
+
+  .big-title {
+      font-size: 3rem;
+  }
+
+  .slogan-text {
+      font-size: 1.25rem;
+  }
+
+  .try-btn {
+      font-size: 14px;
+      padding: 0.75rem 1.5rem;
+  }
+    
+  }
+  
+  @media (max-width: 480px) {
+    .header {
+      padding: 10px;
+      width: 100%; /* Full width */
+  }
+
+  .big-title {
+      font-size: 2rem;
+  }
+
+  .slogan-text {
+      font-size: 1rem;
+  }
+
+  .try-btn {
+      font-size: 12px;
+      padding: 0.5rem 1rem;
+  }
+}
+/* Styling for the footer */
+.footer {
+  position: relative; /* Adjust positioning to align with page content */
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #666;
+  text-align: center;
+  padding: 20px; /* Adjust for spacing */
+}
+
+.footer-content {
+  display: inline-flex; /* Align image and text horizontally */
+  align-items: center; /* Vertically align items */
+  flex-direction: column; /* Stack items vertically */
+}
+
+.footer video {
+  width: 100%; /* Ensures it scales responsively */
+  max-width: 380px; /* Limits the width to maintain intended size */
+  aspect-ratio: 16 / 9; /* Forces the correct aspect ratio */
+  border: none;
+  border-radius: 10px; /* Optional: rounded corners */
+  margin-bottom: 8px;
+  object-fit: contain; /* Ensures the video fills its container properly */
+}

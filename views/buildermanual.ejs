@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="icon" href="/images/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
+    />
+    <script src="/javascripts/userprofile.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
+    <script src="/javascripts/sortableJSgroups.js"></script>
+    <script
+      data-name="BMC-Widget"
+      data-cfasync="false"
+      src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+      data-id="nicowyss"
+      data-description="Support me on Buy me a coffee!"
+      data-color="#347DFE"
+      data-position="Right"
+      data-x_margin="18"
+      data-y_margin="18"
+    ></script>
+    <title>Access Package Builder (Manual)</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <%- include('partials/navbar') %> <!-- Include navbar partial -->
+      <!-- Main Content -->
+      <main class="content">
+        <header>
+          <h1>Access Package Builder (Manual)</h1>
+          <h3>
+            Need more Tools and Support to get an better overview of the Groups!
+          </h3>
+        </header>
+        <section>
+          <h1>Access Package Builder (Manual)</h1>
+          <div id="manually-content">
+            <p>
+              If the algorithm, i.e. the suggestions, is not sufficient, you
+              have the option of sorting the Access Packages manually using the
+              RAW Members Count. Drag and drop groups but be aware, dynamic
+              groups, distribution groups and also on-premise groups <strong>cannot</strong> be
+              added in Access Package.
+            </p>
+            <button id="download-json-btn-manual" class="btn btn-primary">
+              Download JSON
+            </button>
+          </div>
+          <div class="deploy-container">
+            <!-- Column: All Groups -->
+            <div class="column">
+              <h2>All Groups</h2>
+              <ul id="all-groups" class="sortable-list"></ul>
+            </div>
+
+            <!-- Column: Default -->
+            <div class="column">
+              <h2>Default</h2>
+              <ul id="default-group" class="sortable-list"></ul>
+            </div>
+
+            <!-- Column: Company -->
+            <div class="column">
+              <h2>Company</h2>
+              <ul id="company-group" class="sortable-list"></ul>
+            </div>
+
+            <!-- Column: Department -->
+            <div class="column">
+              <h2>Department</h2>
+              <ul id="department-group" class="sortable-list"></ul>
+            </div>
+          </div>
+          <p id="builder-legend"><strong>Legend: </strong>Yellow = Mail | Blue = Security | Purple = On-Premise | Red = M365 | Green = Dynamic</p>
+        </section>
+        <section>
+          <h1>Group Membership Analyzer</h1>
+          <div id="manually-content">
+            <p>
+              Some Groups are hard to associate in the Access Package Builder
+              (manually), so you might need an insights which users are in this
+              groups. It also displays some more important Properties which make
+              it easier for you to decide and which Access Package Bracket you
+              move the Group.
+            </p>
+          </div>
+          <section id="section-groupmembership-table">
+            <!-- Dropdown to select a group -->
+            <div id="groupSelectDiv" class="group-select-div">
+              <label for="groupSelect">Select a Group:</label>
+              <select id="groupSelect">
+                <option value="">-- Select a Group --</option>
+              </select>
+            </div>
+            <!-- Table to display group members -->
+            <table id="groupmembershiptable" class="group-membership-table">
+              <thead>
+                <tr>
+                  <th>Account Enabled</th>
+                  <th>User Type</th>
+                  <th>Name</th>
+                  <th>Department</th>
+                  <th>Office Location</th>
+                  <th>Country</th>
+                  <th>Company Name</th>
+                </tr>
+              </thead>
+              <tbody id="groupMembersTableBody"></tbody>
+            </table>
+          </section>
+        </section>
+      </main>
+    </div>
+    <!-- Include jQuery (required for DataTables) -->
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+    ></script>
+    <!-- Include DataTables JS -->
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"
+    ></script>
+    <script src="/javascripts/groupAnalyzer.js"></script>
+  </body>
+</html>

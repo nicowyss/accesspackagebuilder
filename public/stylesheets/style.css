@@ -1,0 +1,912 @@
+/* General Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Container for Sidebar and Content */
+.container {
+  display: flex;
+  height: 100vh; /* Full height of the viewport */
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 250px;
+  background-color: #2c3e50; /* Dark blue-gray color */
+  color: #ecf0f1; /* Light text color */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #ecf0f1;
+  font-size: 1.1rem;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  background-color: #34495e; /* Slightly lighter shade on hover */
+}
+.sidebar .logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar .logo img {
+  max-width: 150px;
+  border-radius: 10%;
+}
+.copyright-text {
+  font-size: 10px; /* Make the text small */
+  text-align: center; /* Center the text */
+  margin-top: 10px; /* Add space above the text */
+  color: #666; /* Optional: Make the text a lighter gray for subtlety */
+}
+
+.nav-group-label {
+  font-size: 12px; /* Smaller text for the label */
+  color: #bdc3c7; /* Lighter gray color for the label */
+  text-transform: uppercase; /* Optional: Make the text uppercase */
+  margin-bottom: 5px;
+}
+
+.nav-group-divider {
+  border: none; /* Remove default border */
+  border-top: 2px solid #34495e; /* Horizontal line */
+  margin: 5px 0; /* Add space above and below the line */
+}
+
+/* Main Content Styling */
+.content {
+  flex: 1; /* Take up remaining space */
+  padding: 20px;
+  background-color: #f4f4f4; /* Light gray background */
+  overflow-y: auto;
+}
+
+.content header {
+  margin-bottom: 20px;
+}
+
+.content header h1 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.content section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  margin-right: 60px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack sidebar and content */
+  }
+  .loading-container {
+    height: 3px; /* Slightly smaller bar on mobile */
+  }
+  .sidebar {
+    width: 100%;
+    text-align: center;
+  }
+
+  .content {
+    flex: none;
+  }
+}
+
+/* Index Page Container */
+.index-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.index-container .content h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.index-container .content p {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  margin-bottom: 30px;
+}
+
+/* Button Styling */
+.btn-primary {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  color: #ffffff;
+  background-color: #3498db;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Styling map Legend */
+#builder-legend {
+  font-size: 12px;  /* Smaller text */
+  color: #6c757d;   /* Greyish tone */
+  font-weight: 400;  /* Normal weight for readability */
+  margin-top: 10px;  /* Add some spacing from the map */
+  text-align: center; /* Center the legend under the map */
+}
+
+#builder-legend strong {
+  color: #495057; /* Slightly darker grey for emphasis */
+}
+
+/* Styling for the graph container */
+#network {
+  width: auto;
+  margin-right: 60px;
+  height: 500px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the nodes */
+.vis-network .vis-node {
+  font-size: 14px;
+  color: white;
+  border-color: #666;
+}
+
+.vis-network .vis-node.users {
+  background-color: lightblue;
+}
+
+.vis-network .vis-node.groups {
+  background-color: lightgreen;
+}
+
+/* Hidden class */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Loading Bar Styles */
+#loadingBar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  margin-right: 60px;
+  height: 500px;
+  background-color: rgba(200, 200, 200, 0.8);
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+#wrapper {
+  position: relative;
+  width: 100%;
+  margin-right: 60px;
+  height: 500px;
+}
+
+#text {
+  position: absolute;
+  top: 8px;
+  left: 530px;
+  width: 30px;
+  height: 50px;
+  margin: auto auto auto auto;
+  font-size: 22px;
+  color: #000000;
+}
+
+div.outerBorder {
+  position: relative;
+  top: 250px;
+  width: 600px;
+  height: 44px;
+  margin: auto auto auto auto;
+  border: 8px solid rgba(0, 0, 0, 0.1);
+  background: rgb(252, 252, 252); /* Old browsers */
+  background: -moz-linear-gradient(
+    top,
+    rgba(252, 252, 252, 1) 0%,
+    rgba(237, 237, 237, 1) 100%
+  ); /* FF3.6+ */
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, rgba(252, 252, 252, 1)),
+    color-stop(100%, rgba(237, 237, 237, 1))
+  ); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(252, 252, 252, 1) 0%,
+    rgba(237, 237, 237, 1) 100%
+  ); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(
+    top,
+    rgba(252, 252, 252, 1) 0%,
+    rgba(237, 237, 237, 1) 100%
+  ); /* Opera 11.10+ */
+  background: -ms-linear-gradient(
+    top,
+    rgba(252, 252, 252, 1) 0%,
+    rgba(237, 237, 237, 1) 100%
+  ); /* IE10+ */
+  background: linear-gradient(
+    to bottom,
+    rgba(252, 252, 252, 1) 0%,
+    rgba(237, 237, 237, 1) 100%
+  ); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+  border-radius: 72px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+#border {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 500px;
+  height: 23px;
+  margin: auto auto auto auto;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+#bar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 20px;
+  height: 20px;
+  margin: auto auto auto auto;
+  border-radius: 11px;
+  border: 2px solid rgba(30, 30, 30, 0.05);
+  background: rgb(0, 173, 246); /* Old browsers */
+  box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.4);
+}
+/* Styling for userprofile */
+.user-profile {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: 230px; /* Align with sidebar width */
+  background-color: #2c3e50; /* Match sidebar color */
+  color: #ecf0f1; /* Match sidebar text color */
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+.user-profile-btn {
+  background-color: #2c3e50; /* Same as sidebar */
+  color: #ecf0f1; /* Sidebar text color */
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+  padding: 10px;
+  font-size: 1rem; /* Match sidebar font size */
+}
+
+.user-profile-btn img.user-icon {
+  width: 24px; /* Adjust icon size */
+  height: 24px;
+  border-radius: 50%; /* Optional: circular icon */
+}
+
+.user-profile-btn:hover {
+  background-color: #34495e; /* Same hover effect as sidebar links */
+}
+
+.user-profile-dropdown {
+  display: none; /* Hidden by default */
+  position: absolute;
+  bottom: 60px; /* Above the button */
+  left: 0;
+  background-color: #34495e; /* Slightly lighter than sidebar */
+  color: #ecf0f1;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  z-index: 1000;
+  text-align: left;
+  font-size: 0.9rem; /* Slightly smaller font */
+}
+
+.user-profile-dropdown h5 {
+  margin: 0;
+  font-weight: bold;
+}
+
+.user-profile-dropdown .logout-link {
+  display: block;
+  margin-top: 10px;
+  color: #e74c3c; /* Logout in red for emphasis */
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.user-profile-dropdown .logout-link:hover {
+  text-decoration: underline;
+  color: #c0392b; /* Slightly darker red on hover */
+}
+
+/* Identity Governance Status Page */
+.identity-governance-status {
+  padding: 20px;
+  margin-right: 60px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.identity-governance-status h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.identity-governance-status table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.identity-governance-status th, .identity-governance-status td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.identity-governance-status th {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+}
+
+.identity-governance-status td {
+  vertical-align: top;
+}
+
+.identity-governance-status .entra-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+/* Style the DataTable user-table */
+#section-user-table, #section-groupmembership-table, #section-guestusers-table {
+  background-color: #f4f4f4;
+}
+
+#section-groupmembership-table {
+  height: auto; /* Limit height to prevent overflow */
+}
+.user-table, .access-package-table, .group-membership-table, .guest-Users-Table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.user-table th, .user-table td, .access-package-table th, .access-package-table td, .group-membership-table th, .group-membership-table td, .guest-Users-Table th, .guest-Users-Table td {
+  padding: 8px 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.user-table th, .access-package-table th, .group-membership-table th, .guest-Users-Table th {
+  background-color: #2c3e50;
+  color: #f4f4f4;
+}
+
+.user-table td[style*="background-color: red"] {
+  color: #f4f4f4; /* Make text readable on red background */
+}
+
+@media screen and (max-width: 768px) {
+  .user-table, .access-package-table, .group-membership-table, .guest-Users-Table {
+    font-size: 12px; /* Adjust font size on smaller screens */
+  }
+  .loading-container {
+    height: 3px; /* Slightly smaller bar on mobile */
+  }
+}
+/* overview page filter panel*/
+#filter-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#filter-container select {
+  margin-right: 10px;
+  padding: 5px;
+  background-color: #f4f4f4;
+  display: inline-block;
+  min-width: 100px; /* Ensure a reasonable minimum width */
+  width: auto; /* Allow width to adjust based on content */
+  max-width: 150px; /* Optional: limit maximum width for consistent UI */
+  text-overflow: ellipsis; /* Handle long text gracefully */
+  overflow: hidden; /* Prevent text overflow */
+  white-space: nowrap; /* Prevent wrapping of text */
+  border-radius: 8px;
+}
+
+#filter-container select option {
+  white-space: nowrap; /* Ensure options don't wrap */
+}
+
+
+/* Refresh Button */
+#refreshButton {
+  background: linear-gradient(to bottom right, #04D367, #347DFE); /* Updated colors */
+  border: 0;
+  border-radius: 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+#refreshButton:not([disabled]):focus {
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5), 
+              -0.125rem -0.125rem 1rem rgba(4, 211, 103, 0.5), 
+              0.125rem 0.125rem 1rem rgba(52, 125, 254, 0.5); /* Adjusted colors */
+}
+
+#refreshButton:not([disabled]):hover {
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5), 
+              -0.125rem -0.125rem 1rem rgba(4, 211, 103, 0.5), 
+              0.125rem 0.125rem 1rem rgba(52, 125, 254, 0.5); /* Adjusted colors */
+}
+
+/* Add hover effect to make the section header look interactive */
+.toggle-excluded-users {
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.toggle-excluded-users:hover {
+  color: #007bff; /* Change text color to blue */
+  text-decoration: underline; /* Underline the text */
+}
+.toggle-unassigned-groups {
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.toggle-unassigned-groups:hover {
+  color: #007bff; /* Change text color to blue */
+  text-decoration: underline; /* Underline the text */
+}
+.toggle-map-filters {
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+.toggle-map-filters:hover {
+  color: #007bff; /* Change text color to blue */
+  text-decoration: underline; /* Underline the text */
+}
+
+/* Styling for the access package cards */
+#default-access-package {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#company-access-packages {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#department-access-packages {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#unassigned-acccess-packages-table {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#toggleExcludedUsers-table {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Reset Filter Buttons and Download Json for overview and builder pages */
+#reset-filters-btn, #reset-map-btn, #open-overlay-btn, #download-json-btn, #download-json-btn-manual {
+  border-radius: 8px;  
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: #1E90FF;
+}
+
+#reset-filters-btn, #reset-map-btn, #open-overlay-btn, #download-json-btn, #download-json-btn-manual {
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+#reset-filters-btn:hover, #reset-map-btn:hover, #open-overlay-btn:hover, #download-json-btn:hover, #download-json-btn-manual:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+#reset-filters-btn:disabled, #reset-map-btn:disabled, #open-overlay-btn:disabled, #download-json-btn:disabled, #download-json-btn-manual:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+#reset-filters-btn:active, #reset-map-btn:active, #open-overlay-btn:active, #download-json-btn:active, #download-json-btn-manual:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+#reset-filters-btn:focus, #reset-map-btn:focus, #open-overlay-btn:focus, #download-json-btn:focus, #download-json-btn-manual:focus {
+  outline: 1px transparent;
+}
+
+#reset-filters-btn:before, #reset-map-btn:before, #open-overlay-btn:before, #download-json-btn:before, #download-json-btn-manual:before {
+  display: none;
+}
+
+#reset-filters-btn:-webkit-details-marker, #reset-map-btn:-webkit-details-marker, #open-overlay-btn:-webkit-details-marker {
+  display: none;
+}
+#open-overlay-btn {
+  margin-top: 8px;
+}
+
+#recommendations-content, #manually-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#recommendations-content button, #manually-content button {
+  margin-right: 60px;
+}
+
+ /* Styling for Map Filter Panel */
+ .filter-btn {
+  align-items: center;
+  margin-right: 6px;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: .375em;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #2c3e50;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  height: 2.5em;
+  justify-content: center;
+  line-height: 1.5;
+  padding: calc(.5em - 1px) 1em;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.filter-btn:active {
+  border-color: #2c3e50;
+  outline: 0;
+}
+
+.filter-btn:focus {
+  border-color: #2c3e50;
+  outline: 0;
+}
+
+.filter-btn:hover {
+  border-color: #2c3e50;
+}
+
+.filter-btn:focus:not(:active) {
+  box-shadow: rgba(72, 95, 199, .25) 0 0 0 .125em;
+}
+
+
+
+.pagination-controls {
+  text-align: center;
+  margin-top: 10px;
+}
+.pagination-btn {
+  margin: 0 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.pagination-btn.active {
+  background-color: #ffa400;
+  color: #fff;
+}
+
+/* Styling for the SortableJS list */
+.deploy-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.column {
+  height: 550px; /* Adjust this value as needed */
+  overflow-y: auto; /* Adds vertical scrollbar when content exceeds height */
+  width: 22%;
+  border: 2px solid #ddd;
+  padding: 10px;
+  min-height: 300px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.column h2 {
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.sortable-list {
+  list-style: none;
+  padding: 0;
+  min-height: 100px;
+}
+
+.sortable-item:hover {
+  background-color: #f0f8ff; /* Light blue hover effect */
+}
+
+.sortable-item {
+  padding: 10px;
+  margin: 5px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  cursor: grab;
+  display: flex; /* Ensures consistent alignment */
+  flex-direction: column; /* Stack items (strong + p) vertically */
+  align-items: flex-start; /* Align text to the left */
+  transition: transform 0.2s ease-in-out; /* Smooth transform on drag */
+}
+
+.fixed-item {
+  background-color: #f0f0f0; /* Subtle light gray background */
+  text-align: left; /* Center text */
+  margin: 5px 0; /* Small margin between items */
+  cursor: pointer;
+}
+
+.fixed-groups {
+  text-align: left; /* Center text */
+  cursor: pointer;
+}
+
+.sortable-item strong {
+  font-size: 0.9rem;
+  max-width: 100%;
+  display: block; /* Ensures full width for wrapping */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.sortable-item p {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0;
+  padding: 0;
+  display: block; /* Ensures it stays directly below <strong> */
+}
+
+
+.ghost {
+  opacity: 0.5;
+  background: lightgray;
+}
+
+/* General styling for the code container */
+pre {
+  background:#0d1117;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  max-width: 100%; /* Restrict width */
+  font-size: 0.9rem; /* Adjust font size */
+  overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+/* Fixed height with scrolling */
+pre code {
+  display: block;
+  max-height: 600px; /* Fixed height */
+  overflow-y: auto; /* Enable vertical scrolling */
+  white-space: pre-wrap; /* Wrap long lines */
+  word-break: break-word; /* Break long words */
+}
+
+/* Style the container div */
+.group-select-div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 300px; /* Adjust width */
+  margin: 10px auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Label styling */
+.group-select-div label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Style the dropdown */
+#groupSelect {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f8f9fa;
+  appearance: none; /* Remove default arrow */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Custom dropdown arrow */
+#groupSelect {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20' fill='gray'><path d='M7 10l5 5 5-5H7z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+}
+
+/* On hover */
+#groupSelect:hover {
+  border-color: #007bff;
+}
+
+/* On focus */
+#groupSelect:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
+}
+
+/* Add a scrollbar when there are too many options */
+#groupSelect option {
+  padding: 5px;
+  font-size: 14px;
+}
+
+/* Enable scrolling inside dropdown */
+#groupSelect {
+  overflow-y: auto;
+  max-height: 200px; /* Adjust the max height of the dropdown */
+}
+
+#workflow1 {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Make the guest network div a relative container */
+#guest-network-container {
+position: relative;
+margin-right: 60px;
+height: 500px;
+width: 100%;
+}  
+#guest-network {
+width: auto;
+height: 100%;
+margin-right: 60px;
+height: 500px;
+background-color: #f4f4f4;
+border-radius: 10px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#guest-dashboard {
+position: absolute;
+top: 10px;
+right: 10px;
+margin-right: 60px;
+background: rgba(0, 0, 0, 0.7);
+color: white;
+padding: 15px;
+border-radius: 8px;
+max-width: 300px;
+max-height: 500px;
+z-index: 10;
+}

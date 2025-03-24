@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="icon" href="/images/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- Include DataTables CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
+    />
+    <title>Access Package Builder</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <%- include('partials/navbar') %> <!-- Include navbar partial -->
+      <!-- Main Content -->
+      <main class="content">
+        <header>
+          <h1>Access Package Builder</h1>
+        </header>
+        <section>
+          <h2>Map</h2>
+          <p>
+            Based on the attribute information of the users and their group
+            memberships, an interactive map is created to display the
+            visualization of the company.
+          </p>
+          <p>
+            <em
+              >Limitation: <strong>1000</strong> Users and
+              <strong>1000</strong> Edges! Expect longer Loading Times!</em
+            >
+            <span id="nodeCount"></span>
+            <span id="edgeCount"></span>
+          </p>
+          <section id="map-section-filters">
+            <h3 id="toggleMapFilters" class="toggle-map-filters">
+              ⬇️ Filters ⬇️
+            </h3>
+            <div
+              id="filter-panels"
+              class="excluded-map-filers-section"
+              style="display: none"
+            >
+              <button id="reset-map-btn">Reset Map</button>
+              <!-- <button id="show-guests-btn">Show Guest Users</button> -->
+              <div>
+                <h3>Departments</h3>
+                <div id="department-filter-panel" class="filter-panel"></div>
+              </div>
+              <div>
+                <h3>Companies</h3>
+                <div id="company-filter-panel" class="filter-panel"></div>
+              </div>
+            </div>
+          </section>
+          <!-- vis.js map -->
+          <div id="wrapper">
+            <div id="network"></div>
+            <div id="loadingBar">
+              <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                  <div id="bar"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p id="builder-legend"><strong>Legend: </strong>Yellow = Mail | Blue = Security | Purple = On-Premise | Red = M365 | Green = Dynamic</p>
+        </section>
+        <section>
+          <h2>Recommendations</h2>
+          <div id="recommendations-content">
+            <p>
+              The algorithm now calculates possible groups which could be assigned
+              in Default, Company (C), Department (D) or Access Package (AP).
+            </p>
+            <button id="download-json-btn" class="btn btn-primary">Download JSON</button>
+          </div>
+          <!-- Default Access Package Section -->
+          <section id="default-access-package">
+            <h3>
+              <img
+                src="/images/globe.png"
+                alt="Default Icon"
+                style="
+                  width: 30px;
+                  height: 30px;
+                  margin-right: 8px;
+                  vertical-align: middle;
+                "
+              />Default Access Package
+            </h3>
+            <table id="defaultAccessPackages" class="access-package-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Groups</th>
+                </tr>
+              </thead>
+              <tbody id="defaultAccessPackagesBody">
+                <!-- Rows will be dynamically inserted here by JavaScript -->
+              </tbody>
+            </table>
+          </section>
+
+          <!-- Company Access Packages Section -->
+          <section id="company-access-packages">
+            <h3>
+              <img
+                src="/images/companyName.png"
+                alt="Company Icon"
+                style="
+                  width: 30px;
+                  height: 30px;
+                  margin-right: 8px;
+                  vertical-align: middle;
+                "
+              />Company Access Packages
+            </h3>
+            <table id="companyAccessPackages" class="access-package-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Groups</th>
+                </tr>
+              </thead>
+              <tbody id="companyAccessPackagesBody">
+                <!-- Rows will be dynamically inserted here by JavaScript -->
+              </tbody>
+            </table>
+          </section>
+
+          <!-- Department Access Packages Section -->
+          <section id="department-access-packages">
+            <h3>
+              <img
+                src="/images/department.png"
+                alt="Department Icon"
+                style="
+                  width: 30px;
+                  height: 30px;
+                  margin-right: 8px;
+                  vertical-align: middle;
+                "
+              />Department Access Packages
+            </h3>
+            <table id="departmentAccessPackages" class="access-package-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Groups</th>
+                </tr>
+              </thead>
+              <tbody id="departmentAccessPackagesBody">
+                <!-- Rows will be dynamically inserted here by JavaScript -->
+              </tbody>
+            </table>
+          </section>
+        </section>
+        <!-- unassigned Access Packages Section -->
+        <section id="unassigned-access-packages">
+          <h3 id="toggleUnassignedGroups" class="toggle-unassigned-groups">
+            ⬇️ Unassigned Groups ⬇️
+          </h3>
+          <div
+            id="excludedUnassignedGroupContent"
+            class="excluded-unassigned-group-section"
+            style="display: none"
+          >
+            <p>
+              This list shows all groups that could not be assigned to an access
+              package using the algorithm. Perhaps helpful for analysis.
+            </p>
+            <section id="unassigned-acccess-packages-table">
+            <table id="unassignedAccessPackages" class="access-package-table">
+              <thead>
+                <tr>
+                  <th>Unassigned Group</th>
+                  <th>Group Type</th>
+                  <th>User Name</th>
+                  <th>Department</th>
+                  <th>Company Name</th>
+                </tr>
+              </thead>
+              <tbody id="unassignedGroupsBody">
+                <!-- Rows will be dynamically inserted here by JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+        </section>
+        <section>
+          <h3 id="toggleExcludedUsers" class="toggle-excluded-users">
+            ⬇️ Excluded Users ⬇️
+          </h3>
+          <div
+            id="excludedUsersContent"
+            class="excluded-users-section"
+            style="display: none"
+          >
+            <p>
+              These Users are excluded from the Analysis because they might miss
+              Information for Department or Company Data:
+            </p>
+            <section id="toggleExcludedUsers-table">
+            <table id="excludedUsers" class="access-package-table">
+              <thead>
+                <tr>
+                  <th>Account Enabled</th>
+                  <th>User Type</th>
+                  <th>User Name</th>
+                  <th>Department</th>
+                  <th>Company Name</th>
+                </tr>
+              </thead>
+              <tbody id="excludedUsersContainer">
+                <!-- Rows will be dynamically inserted here by JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+        </section>
+      </main>
+    </div>
+    <!-- Include jQuery (required for DataTables) -->
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+    ></script>
+    <!-- Include DataTables JS -->
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+    <script src="/javascripts/userprofile.js"></script>
+    <script src="/javascripts/dataVisMap.js"></script>
+    <script src="/javascripts/toggleSections.js"></script>
+    <script src="/javascripts/accessPackageTable.js"></script>
+    <script
+      data-name="BMC-Widget"
+      data-cfasync="false"
+      src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+      data-id="nicowyss"
+      data-description="Support me on Buy me a coffee!"
+      data-color="#347DFE"
+      data-position="Right"
+      data-x_margin="18"
+      data-y_margin="18"
+    ></script>
+  </body>
+</html>

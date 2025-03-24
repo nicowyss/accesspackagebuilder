@@ -1,0 +1,22 @@
+{
+  "defaultAccessPackage": {
+    "Default": ["op-group1"]
+  },
+  "companyAccessPackages": {
+    "cloudfil.ch": ["op-group2"],
+    "contoso.com": ["Contoso-SharePoint-Page"]
+  },
+  "departmentAccessPackages": {
+    "IT": ["op-group3"],
+    "Sales": [
+      "EID-MarketingMaterials",
+      "contoso-MarketingDokumentationen",
+      "contoso-SalesFunnel"
+    ],
+    "Digital Transformation": [
+      "op-group3"
+    ],
+    "Marketing": ["EID-MarketingMaterials", "EID-MarketingRecuritmentStuff"],
+    "HR": ["EID-HR-Tool-Project"]
+  }
+}

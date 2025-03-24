@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="icon" href="/images/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css"
+    />
+    <script src="/javascripts/userprofile.js"></script>
+    <script
+      data-name="BMC-Widget"
+      data-cfasync="false"
+      src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+      data-id="nicowyss"
+      data-description="Support me on Buy me a coffee!"
+      data-color="#347DFE"
+      data-position="Right"
+      data-x_margin="18"
+      data-y_margin="18"
+    ></script>
+    <title>Access Package Builder - Deployment Guide!</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <%- include('partials/navbar') %> <!-- Include navbar partial -->
+      <!-- Main Content -->
+      <main class="content">
+        <header>
+          <h1>Deployment Guide</h1>
+          <h3>
+            A method to bring your tailored Recommendations in your Tenant!
+          </h3>
+        </header>
+        <section>
+          <h1>Implement Recommendations via Powershell</h1>
+          <p>
+            Now how do I create this automatically in my tenant, as the web app
+            is read-only. Together with the community, the following Powershell
+            script was developed, which enables the recommendations or the
+            manually created assignment of groups in Access Packages to be
+            created directly in the tenant via json import.
+          </p>
+          <pre><code class="powershell"><%- highlightedCode %></code></pre>
+          <p>
+            Special thanks to Christian Frohn
+            <a
+              href="https://www.christianfrohn.dk/tag/entra-id-governance/"
+              target="_blank"
+              >(Blog)</a
+            >
+            who created the script
+            <a
+              href="https://github.com/ChrFrohn/Access-Package-Builder/"
+              target="_blank"
+              >(CreateAccessPackageFromJSON.ps1)</a
+            >
+            for the solution. Hosted by ❤️ Github
+          </p>
+        </section>
+      </main>
+    </div>
+    <!-- Highlight.js JS -->
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+    ></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        hljs.highlightAll();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Access Package Builder - Data Quality</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="icon" href="/images/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- Include DataTables CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <%- include('partials/navbar') %> <!-- Include navbar partial -->
+      <!-- Main Content -->
+      <main class="content">
+        <header>
+          <h1>Entra ID Organization Overview</h1>
+        </header>
+        <section>
+          <h2>Overview</h2>
+          <p>
+            This status overview gives an insight into how large the
+            organization is and shows information on users, groups and much
+            more.
+          </p>
+          <div class="identity-governance-status">
+            <h1>Identity Governance Status</h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Your Identity & Access Landscape</th>
+                  <th>Microsoft Entra ID Governance</th>
+                  <th>Your ID Governance Configurations</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Total Users: <br /><strong><%= status.totalUsers %></strong>
+                  </td>
+                  <td rowspan="6">
+                    <img
+                      src="/images/entra-id-governance.svg"
+                      alt="Entra Governance"
+                      class="entra-image"
+                    />
+                  </td>
+                  <td>
+                    Dynamic Groups: <br /><strong
+                      ><%= status.dynamicGroups %></strong
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Total Groups: <br /><strong
+                      ><%= status.totalGroups %></strong
+                    >
+                  </td>
+                  <td>
+                    Security Groups <br /><strong
+                      ><%= status.securityGroups %></strong
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    App Registrations: <br /><strong
+                      ><%= status.applications %></strong
+                    >
+                  </td>
+                  <td colspan="2">
+                    M365 Groups: <br /><strong><%= status.M365Groups %></strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    Devices <br /><strong><%= status.deviceCount %></strong>
+                  </td>
+                  <td colspan="2">
+                    Cloud Groups: <br /><strong
+                      ><%= status.cloudGroups %></strong
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    Guest Users: <br /><strong><%= status.guestUsers %></strong>
+                  </td>
+                  <td colspan="2">
+                    On-Premise Groups: <br /><strong
+                      ><%= status.onPremiseGroups %></strong
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section>
+          <h2>User Attribute List</h2>
+          <p>
+            This list shows the current data quality of the attributes. The aim
+            is to have all fields correct and maintained (no more red cells)
+            before the next step is taken.
+          </p>
+          <div id="filter-container" style="margin-bottom: 20px">
+            <!-- Filters will be dynamically added here -->
+          </div>
+          <section id="section-user-table">
+            <button id="reset-filters-btn">Reset Filters</button>
+            <table class="user-table">
+              <thead>
+                <tr>
+                  <th>Account Enabled</th>
+                  <th>User Type</th>
+                  <th>Display Name</th>
+                  <th>Job Title</th>
+                  <th>Department</th>
+                  <th>Office Location</th>
+                  <th>Country</th>
+                  <th>Company Name</th>
+                  <th>City</th>
+                  <th>Street Address</th>
+                  <th>State</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (typeof users !== 'undefined' && users.length > 0) { %> <%
+                users.forEach(user => { %>
+                <tr>
+                  <td><%= user.accountEnabled ? "✔️" : "❌" %> <%= user.accountEnabled ? "Enabled" : "Disabled" %></td>
+                  <td><%= user.userType %></td>
+                  <td><%= user.displayName %></td>
+                  <td><%= user.jobTitle %></td>
+                  <td><%= user.department %></td>
+                  <td><%= user.officeLocation %></td>
+                  <td><%= user.country %></td>
+                  <td><%= user.companyName %></td>
+                  <td><%= user.city %></td>
+                  <td><%= user.streetAddress %></td>
+                  <td><%= user.state %></td>
+                </tr>
+                <% }) %> <% } else { %>
+                <tr>
+                  <td colspan="11">No users found.</td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </section>
+        </section>
+      </main>
+    </div>
+    <!-- Include jQuery (required for DataTables) -->
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+    ></script>
+    <!-- Include DataTables JS -->
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"
+    ></script>
+    <script src="javascripts/userprofile.js"></script>
+    <script src="javascripts/dataTableUsers.js"></script>
+    <script
+      data-name="BMC-Widget"
+      data-cfasync="false"
+      src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+      data-id="nicowyss"
+      data-description="Support me on Buy me a coffee!"
+      data-color="#347DFE"
+      data-position="Right"
+      data-x_margin="18"
+      data-y_margin="18"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="icon" href="/images/favicon.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <title>Access Package Builder - Instructions</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <%- include('partials/navbar') %> <!-- Include navbar partial -->
+      <!-- Main Content -->
+      <main class="content">
+        <header>
+          <h1>Instructions Access Package Builder</h1>
+          <h3>
+            Follow this guide to make your organization more safe and reliable
+            (Read Time: 8 min)
+          </h3>
+        </header>
+        <section id="introduction">
+          <h1>Introduction to Identity Governance</h1>
+          <p>
+            Microsoft Entra ID - Identity Governance is the practice of managing
+            user identities, access rights, and permissions to ensure that users
+            have the appropriate level of access to resources within an
+            organization. It helps maintain security, compliance, and
+            operational efficiency by ensuring that access is granted based on
+            roles, responsibilities, and business needs.
+          </p>
+
+          <h3>The Problem with Manual Permission Assignment</h3>
+          <p>
+            Manually assigning permissions to users is time-consuming,
+            error-prone, and difficult to scale. As organizations grow, tracking
+            and managing individual user access becomes increasingly complex.
+            This often leads to outdated permissions, unauthorized access, and
+            increased security risks. Manual processes also waste valuable IT
+            resources, hindering productivity and increasing the likelihood of
+            compliance violations.
+          </p>
+
+          <h3>How the Access Package Builder Can Help</h3>
+          <p>
+            The Access Package Builder solves these issues by automating the
+            assignment of access through a smart algorithm. It analyzes users,
+            their group memberships, and their relationship to organizational
+            data, including the department structure. Based on this analysis,
+            the tool suggests tailored Access Packages that group necessary
+            resources together for each user or group. This helps streamline
+            access management, ensuring that users receive the right permissions
+            while maintaining security and compliance.
+          </p>
+          <p>
+            Adopting Access Packages powered by intelligent algorithms offers
+            numerous benefits for organizations:
+          </p>
+          <ul>
+            <li>
+              <strong>Improved security:</strong> By automating access
+              assignments, organizations can reduce the risk of human error and
+              ensure that users only have access to the resources they need,
+              minimizing the potential for unauthorized access.
+            </li>
+            <li>
+              <strong>Enhanced efficiency:</strong> The automated creation of
+              Access Packages drastically reduces the time and resources spent
+              on permission management, allowing IT teams to focus on more
+              strategic tasks.
+            </li>
+            <li>
+              <strong>Scalability:</strong> As organizations grow and the number
+              of users and resources increases, the algorithm can continue to
+              generate and manage Access Packages, ensuring that access remains
+              efficient and secure without additional manual effort.
+            </li>
+          </ul>
+        </section>
+
+        <section id="data-quality">
+          <h1>Step 1: Data Quality</h1>
+          <p>
+            Data quality is a cornerstone of a strong and secure Identity
+            Governance framework. In the future, as organizations increasingly
+            rely on automated systems to manage user access, the quality of your
+            data will directly influence the effectiveness of those systems.
+            Accurate, complete, and up-to-date user data is essential for
+            ensuring that access is granted appropriately, minimizing security
+            risks, and ensuring compliance.
+          </p>
+
+          <p>
+            As part of this process, your Identity Governance Landscape will
+            display a comprehensive overview of your organization's current user
+            data. This includes crucial attributes like department, company
+            name, job title, group memberships, and more. These data points are
+            invaluable, as they provide the foundation for understanding your
+            organization's structure and users' roles within it. Without
+            accurate data, even the most advanced algorithms cannot make precise
+            or secure access recommendations.
+          </p>
+
+          <p>
+            For Identity Governance systems to work effectively, they must have
+            access to reliable data. Poor data quality such as outdated or
+            incomplete user information can lead to users being granted
+            inappropriate access, resulting in security vulnerabilities or
+            compliance issues. It’s critical that each user's attributes, such
+            as job title, department, and group memberships, are consistently
+            updated and accurate to ensure that they only have access to the
+            resources they need. By cleaning and enriching your user data, you
+            are taking the first step toward reducing risks and increasing
+            security across your organization.
+          </p>
+
+          <h3>Prepare Your Data for Step 2: Access Package Builder</h3>
+          <p>
+            Before moving on to the next step, it's important to ensure that
+            your company’s user data is in top shape.<strong
+              >Try to elimate every RED Column!</strong
+            >
+            The Access Package Builder will rely on this data to make detailed,
+            algorithm-based suggestions about the appropriate access for each
+            user. The more accurate and comprehensive your data is, the more
+            effectively the algorithm will be able to generate precise Access
+            Packages. Start by reviewing and updating your organization’s user
+            data now this is the foundation for a successful and secure
+            transition to automated access management.
+          </p>
+
+          <p>
+            <strong>In summary:</strong> Ensure that your user data is accurate
+            and up-to-date before moving to Step 2. High-quality data is crucial
+            for the success of your Identity Governance strategy, and it will
+            greatly enhance the performance of the Access Package Builder when
+            it's time to assign the right resources to the right people.
+          </p>
+        </section>
+        <section id="access-package-builder">
+          <h1>Step 2: Access Package Builder</h1>
+          <p>
+            In this step, the Access Package Builder visualizes your
+            organization's structure to help you understand how users, groups,
+            departments, and companies are connected. The tool displays an
+            interactive map where you can see how different entities in your
+            organization, such as users, groups, and departments, relate to each
+            other. This visualization provides you with a clearer picture of
+            your company's structure and how your current permission management
+            is set up.
+          </p>
+
+          <h3>How the Algorithm Works</h3>
+          <p>
+            The Access Package Builder uses an advanced algorithm to analyze the
+            relationships between users, groups, departments, and companies
+            within your organization. By examining these connections, the
+            algorithm generates suggestions for Access Packages that group
+            relevant resources together, based on the structure of your
+            organization. This ensures that users are assigned the right access
+            based on their role, group, department, and company affiliation.
+          </p>
+
+          <h3>Access Package Groups</h3>
+          <p>
+            The suggested Access Packages are organized into three key groups:
+          </p>
+          <ul>
+            <li>
+              <strong>Default Access Package:</strong> This package includes a
+              summary of all groups where users are assigned across the
+              organization. It serves as a baseline for general access.
+            </li>
+            <li>
+              <strong>Company Access Package:</strong> This package groups
+              together users from the same company, combining relevant resources
+              and permissions for those users who work within the same
+              organizational entity.
+            </li>
+            <li>
+              <strong>Department Access Package:</strong> This package displays
+              groups of users within the same department, making it easier to
+              manage access for teams working in specific functions within the
+              company.
+            </li>
+          </ul>
+          <p>
+            By using the Access Package Builder, you can quickly see how your
+            organization is structured and gain insights into the relationship
+            between users, departments, and companies. The suggestions provided
+            by the algorithm will help streamline the process of assigning
+            access, ensuring that users have the right permissions based on
+            their roles and affiliations within the company.
+          </p>
+
+          <p>
+            With this visualization and intelligent suggestions, you are one
+            step closer to improving access management and ensuring that
+            permissions are accurately aligned with the organizational
+            structure.
+          </p>
+        </section>
+        <section id="access-package-builder-manual">
+          <h1>Step 2.1: Access Package Builder Manual</h1>
+          <p>
+            On this page, you can create your Access Packages based on a Group
+            Selection. Each group displayed will show the number of members,
+            making it easier for you to decide where to place the group (in
+            which category: Default, Company, or Department).
+          </p>
+          <h3>Understanding the Group Selection</h3>
+          <p>
+            The group selection dropdown lists all available groups. Each group
+            also displays the member count and group type, which can help you
+            decide where to assign the group:
+          </p>
+          <ul>
+            <li>
+              <strong>Default:</strong> Groups that are for all users in my
+              organization.
+            </li>
+            <li>
+              <strong>Company:</strong> Groups that belong to a specific
+              company.
+            </li>
+            <li>
+              <strong>Department:</strong> Groups that belong to a specific
+              department.
+            </li>
+          </ul>
+          <h3>Group Membership Analyzer</h3>
+          <p>
+            If you're unsure about a group, there’s a built-in
+            <span class="highlight">Group Membership Analyzer</span> located
+            below the group list. This analyzer helps you better understand the
+            group by displaying detailed information about its members.
+          </p>
+          <p>
+            For each group, you can view the following details about its
+            members:
+          </p>
+          <ul>
+            <li>
+              <strong>accountEnabled:</strong> Whether the user's account is
+              enabled or not (e.g., ✔️ Enabled, ❌ Disabled).
+            </li>
+            <li>
+              <strong>userType:</strong> The type of user (e.g.,
+              <em>Member</em>, <em>Guest</em>).
+            </li>
+            <li>
+              <strong>Department:</strong> The department the user belongs to.
+            </li>
+            <li>
+              <strong>officeLocation:</strong> The physical office location of
+              the user.
+            </li>
+            <li>
+              <strong>Country:</strong> The country in which the user resides.
+            </li>
+            <li>
+              <strong>CompanyName:</strong> The company the user belongs to.
+            </li>
+          </ul>
+          <p>
+            This detailed information helps you decide where the group should be
+            assigned whether it's to a Default Access Package, Company Access
+            Package, or Department Access Package. By using the Manual Builder
+            and Group Membership Analyzer features, you can efficiently
+            categorize your groups and assign them to the appropriate Access
+            Package. This process ensures that your groups are well-organized
+            and easy to manage.
+          </p>
+        </section>
+        <section id="deployment-guide">
+          <h1>Step 3: Deployment Guide</h1>
+          <p>
+            This guide will walk you through the process of deploying your
+            Access Package associations and recommendations to your Entra ID
+            Tenants using a PowerShell solution created by the community. The
+            script is hosted on GitHub and is completely free to use.
+          </p>
+          <h3>Create and Export Access Packages</h3>
+          <p>
+            Start by creating your Access Packages on the Access Package Builder
+            platform. You can create Access Packages based on default settings,
+            company associations, or departments. Once your Access Packages are
+            ready, export them as a <strong>JSON file</strong> using the options
+            provided on the website.
+          </p>
+          <h3>Review and Download the PowerShell Script</h3>
+          <p>
+            Next, download the PowerShell script hosted on Github. Take the time
+            to carefully review the script documentation so that you understand
+            how it works and how to run it in your environment.
+          </p>
+          <h3>Use the JSON File as Input</h3>
+          <p>
+            After downloading the PowerShell script, use the
+            <strong>JSON file</strong> that you exported in Step 2 or Step 2.1
+            as input for the script. This file contains the necessary
+            configuration for deploying your Access Packages, which the script
+            will use to automate the setup.
+          </p>
+          <h3>Deploy to Your Environment</h3>
+          <p>
+            Run the PowerShell script in your environment to deploy the
+            configurations to your Entra ID Tenants. After the script completes,
+            check the logs for any errors or warnings. You should also review
+            the portals to confirm that everything is set up correctly and that
+            the Access Package associations have been deployed as expected. This
+            deployment guide provides an efficient way to transition your
+            configurations from the Access Package Builder platform into a
+            production environment.
+          </p>
+          <p>
+            <strong style="color: #c73a4f">ATTENTION:</strong> The Script does
+            not assign Access Packages to Users in your organization! The
+            Assignment Policy has to be enabled manually!
+          </p>
+        </section>
+        <!--
+        <section id="lifecycleworkflows">
+          <h1>sdfsdfs</h1>
+        </section>
+        <section id="accessreviews">
+          <h1>sdfsdfs</h1>
+        </section>
+        -->
+        <section id="next-steps">
+          <h1>Next Steps!</h1>
+          <p>
+            This solution is focused specifically on Access Packages,
+            simplifying this critical part of your Identity Governance process.
+            By automating and optimizing how access is managed across your
+            organization, the Access Package Builder helps ensure that the right
+            users receive the right permissions with minimal effort.
+          </p>
+
+          <p>
+            However, this is just the beginning! There are many more features
+            within the Identity Governance suite that can further enhance
+            security, compliance, and operational efficiency. Stay tuned for
+            upcoming tools and updates that will help you take your Identity
+            Governance to the next level.
+          </p>
+
+          <p>
+            We are constantly working to provide more capabilities that will
+            streamline your user access management, so keep an eye out for
+            exciting new features to come!
+          </p>
+          <p>
+            If you enjoy using this free platform, please consider supporting
+            the effort and continuous development by buying me a coffee! 😊 You
+            can find the support button in the lower right corner of the page to
+            help contribute to this project.
+          </p>
+        </section>
+      </main>
+    </div>
+    <script src="/javascripts/userprofile.js"></script>
+    <script
+      data-name="BMC-Widget"
+      data-cfasync="false"
+      src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+      data-id="nicowyss"
+      data-description="Support me on Buy me a coffee!"
+      data-color="#347DFE"
+      data-position="Right"
+      data-x_margin="18"
+      data-y_margin="18"
+    ></script>
+    <!-- 
+    <script src="https://cdn.jsdelivr.net/npm/@microsoft/applicationinsights-web@2.5.1/dist/applicationinsights-web.min.js"></script>
+    <script>
+      window.appInsightsConnectionString = "<%= connectionString %>";
+    </script>
+    <script src="/javascripts/appInsights.js"></script>
+    <script>
+      if (typeof setUserContext === "function") {
+        setUserContext(
+          "<%= tenantId %>",
+          "<%= displayName %>",
+          "<%= userPrincipalName %>"
+        );
+      } else {
+        console.error("setUserContext function is not available.");
+      }
+
+      if (typeof trackPageVisit === "function") {
+        trackPageVisit("success");
+      } else {
+        console.error("trackPageVisit function is not available.");
+      }
+    </script>
+    -->
+  </body>
+</html>

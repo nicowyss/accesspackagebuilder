@@ -1,0 +1,25 @@
+{
+  "name": "accesspackagebuilder",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@azure/msal-node": "^2.16.2",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@microsoft/applicationinsights-web": "^3.3.4",
+    "applicationinsights": "^3.4.0",
+    "axios": "^1.7.9",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^16.4.7",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-session": "^1.18.1",
+    "highlight.js": "^11.11.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "sortablejs": "^1.15.6"
+  }
+}
