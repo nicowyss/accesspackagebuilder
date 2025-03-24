@@ -9,6 +9,7 @@ on:
   pull_request:
     branches:
       - main
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -23,15 +24,12 @@ jobs:
         node-version: 20  # Adjust to your Node.js version
 
     - name: Install dependencies
-      run: npm install  # Installs node_modules (excluded from GitHub)
+      run: npm ci  # Cleaner, faster, and more reliable than "npm install"
 
-    - name: Set up environment variables
-      run: |
-        echo "AZURE_CLIENT_ID=${{ secrets.AZURE_CLIENT_ID }}" >> $GITHUB_ENV
-        echo "AZURE_CLIENT_SECRET=${{ secrets.AZURE_CLIENT_SECRET }}" >> $GITHUB_ENV
-        echo "APPLICATIONINSIGHTS_CONNECTION_STRING=${{ secrets.APPLICATIONINSIGHTS_CONNECTION_STRING }}" >> $GITHUB_ENV
-        echo "HOST=${{ secrets.HOST }}" >> $GITHUB_ENV
-    
+    # Uncomment if a build step is required
+    # - name: Build project
+    #   run: npm run build
+
     - name: Login to Azure
       uses: azure/login@v1
       with:
@@ -41,5 +39,4 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: "accesspackagebuilder"
-        slot-name: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
         package: .  # Deploys the entire app
