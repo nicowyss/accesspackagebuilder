@@ -4,7 +4,7 @@
 ### dotenv ###
 .env
 node_modules/
-
+.vscode/
 
 ### Node ###
 # Logs

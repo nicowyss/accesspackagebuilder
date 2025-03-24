@@ -1,26 +1,26 @@
 require("dotenv").config({ path: "./.env" });
 const msal = require("@azure/msal-node");
-const axios = require("axios"); // To make HTTP requests
+const axios = require("axios");
 const hljs = require("highlight.js");
 
-// Configuration for MSAL
+// Configuration for MSAL (Use environment variables)
 const msalConfig = {
   auth: {
-    clientId: process.env.AZURE_CLIENT_ID, // Use environment variables
+    clientId: process.env.AZURE_CLIENT_ID,
     authority: "https://login.microsoftonline.com/common",
-    clientSecret: process.env.AZURE_CLIENT_SECRET, // Use environment variables
+    clientSecret: process.env.AZURE_CLIENT_SECRET, 
   },
 };
 
 // Initialize Confidential Client Application
 const pca = new msal.ConfidentialClientApplication(msalConfig);
 
-// Define required scopes (Add RoleManagement.Read.Directory)
+// Define required scopes
 const requiredScopes = [
   "User.Read.All",
   "Directory.Read.All",
   "Group.Read.All",
-  "RoleManagement.Read.Directory", // Added new API permission
+  "RoleManagement.Read.Directory",
 ];
 
 // Function to generate Authorization URL
@@ -101,7 +101,7 @@ const getUserInfo = async (accessToken) => {
 
 const getUsersList = async (accessToken) => {
   let users = [];
-  let nextLink = "https://graph.microsoft.com/v1.0/users"; // Start with the first page
+  let nextLink = "https://graph.microsoft.com/v1.0/users";
 
   try {
     while (nextLink) {
@@ -119,10 +119,7 @@ const getUsersList = async (accessToken) => {
             : {}, // Only add $select for the first request
       });
 
-      // Append the current page of users to the users array
       users = users.concat(response.data.value);
-
-      // If there's a next page, update nextLink with the URL from the response
       nextLink = response.data["@odata.nextLink"] || null;
     }
     return users;
@@ -138,14 +135,13 @@ const getUsersList = async (accessToken) => {
 // Function to fetch groups of a user (with pagination)
 async function getUserGroups(userId, accessToken) {
   let groups = [];
-  let nextLink = `https://graph.microsoft.com/v1.0/users/${userId}/memberOf`; // Start with the first page
+  let nextLink = `https://graph.microsoft.com/v1.0/users/${userId}/memberOf`;
   const headers = { Authorization: `Bearer ${accessToken}` };
   try {
     while (nextLink) {
-      // Loop through pages if more results are available
       const response = await axios.get(nextLink, { headers });
-      groups = groups.concat(response.data.value); // Add current page groups to the array
-      nextLink = response.data["@odata.nextLink"] || null; // Update nextLink to continue fetching next page if available
+      groups = groups.concat(response.data.value); 
+      nextLink = response.data["@odata.nextLink"] || null; 
     }
 
     // Return the transformed array
@@ -334,7 +330,7 @@ async function getGuestAccessData(accessToken) {
       }
         */
 
-      // **Fetch Active Role Assignments**
+      // Fetch Active Role Assignments
       let activeRoles = [];
       try {
         const activeRolesResponse = await axios.get(
@@ -372,7 +368,7 @@ async function getGuestAccessData(accessToken) {
         );
       }
 
-      // **Fetch Eligible Role Assignments**
+      // Fetch Eligible Role Assignments
       let eligibleRoles = [];
       try {
         const eligibleRolesResponse = await axios.get(
@@ -522,7 +518,7 @@ async function getIdentityGovernanceStatus(accessToken) {
       user.userPrincipalName.includes("#EXT#")
     ).length;
 
-    // Fetch privileged roles
+    // Fetch privileged roles (not productive!!!!!!!!!!)
     let rolesUrl =
       "https://graph.microsoft.com/v1.0/roleManagement/directory/roleDefinitions";
     let rolesResponse = await axios.get(rolesUrl, { headers });

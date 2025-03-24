@@ -7,7 +7,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var session = require('express-session'); // Add session middleware
+var session = require('express-session'); 
 const appInsights = require("applicationinsights");
 
 // Set the connection string from environment variable (ensure it's set in your environment)
@@ -26,7 +26,7 @@ appInsights.defaultClient.trackEvent({ name: "app_start" });
 // Import routers
 var indexRouter = require('./routes/index');
 var successRouter = require('./routes/success');
-var authRouter = require('./routes/auth'); // Import the authentication router
+var authRouter = require('./routes/auth'); 
 var overviewRouter = require("./routes/overview");
 var builderRouter = require("./routes/builder");
 var nextStepsRouter = require("./routes/nextSteps");
@@ -60,7 +60,7 @@ app.use(
 // Use routers
 app.use('/', indexRouter);
 app.use('/', successRouter);
-app.use('/auth', authRouter); // Use the auth router for authentication routes
+app.use('/auth', authRouter);
 app.use("/overview", overviewRouter);
 app.use("/builder", builderRouter);
 app.use("/nextSteps", nextStepsRouter);

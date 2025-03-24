@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - staging  # Triggers for both branches
   workflow_dispatch:  # Allows manual trigger
   pull_request:
     branches:
@@ -25,10 +24,6 @@ jobs:
 
     - name: Install dependencies
       run: npm ci  # Cleaner, faster, and more reliable than "npm install"
-
-    # Uncomment if a build step is required
-    # - name: Build project
-    #   run: npm run build
 
     - name: Login to Azure
       uses: azure/login@v1
