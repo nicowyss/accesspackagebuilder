@@ -8,7 +8,7 @@ const msalConfig = {
   auth: {
     clientId: process.env.AZURE_CLIENT_ID,
     authority: "https://login.microsoftonline.com/common",
-    clientSecret: process.env.AZURE_CLIENT_SECRET, 
+    clientSecret: process.env.AZURE_CLIENT_SECRET,
   },
 };
 
@@ -20,7 +20,6 @@ const requiredScopes = [
   "User.Read.All",
   "Directory.Read.All",
   "Group.Read.All",
-  "RoleManagement.Read.Directory",
 ];
 
 // Function to generate Authorization URL
@@ -140,17 +139,23 @@ async function getUserGroups(userId, accessToken) {
   try {
     while (nextLink) {
       const response = await axios.get(nextLink, { headers });
-      groups = groups.concat(response.data.value); 
-      nextLink = response.data["@odata.nextLink"] || null; 
+      groups = groups.concat(response.data.value);
+      nextLink = response.data["@odata.nextLink"] || null;
     }
 
     // Return the transformed array
     return groups.map((group) => {
       let groupTypeLabel = "Unknown"; // Default label
 
-      if (Array.isArray(group.groupTypes) && group.groupTypes.includes("DynamicMembership")) {
+      if (
+        Array.isArray(group.groupTypes) &&
+        group.groupTypes.includes("DynamicMembership")
+      ) {
         groupTypeLabel = "Dynamic";
-      } else if (Array.isArray(group.groupTypes) && group.groupTypes.includes("Unified")) {
+      } else if (
+        Array.isArray(group.groupTypes) &&
+        group.groupTypes.includes("Unified")
+      ) {
         groupTypeLabel = "M365";
       } else if (group.onPremisesSyncEnabled) {
         groupTypeLabel = "On-Premise";
@@ -168,7 +173,6 @@ async function getUserGroups(userId, accessToken) {
         type: groupTypeLabel,
       };
     });
-;
   } catch (err) {
     console.error(`Error fetching groups for user ${userId}:`, err);
     return [];
@@ -285,195 +289,6 @@ async function getCompaniesAndDepartments(accessToken) {
     companies: Array.from(companies).sort((a, b) => a.localeCompare(b)), // Descending order
     departments: Array.from(departments).sort((a, b) => a.localeCompare(b)), // Descending order
   };
-}
-
-async function getGuestAccessData(accessToken) {
-  const graphBaseUrl = "https://graph.microsoft.com/v1.0";
-  const headers = { Authorization: `Bearer ${accessToken}` };
-
-  let guests = [];
-  let nextLink = `${graphBaseUrl}/users?$filter=userType eq 'Guest'&$select=id,displayName,mail,userPrincipalName,accountEnabled,creationType`;
-
-  try {
-    // Fetch guest users with pagination
-    while (nextLink) {
-      const response = await axios.get(nextLink, { headers });
-      guests = guests.concat(response.data.value);
-      nextLink = response.data["@odata.nextLink"] || null;
-    }
-
-    // Fetch roles and group memberships for each guest
-    for (let guest of guests) {
-      const userId = guest.id;
-
-      // Extract domain from email
-      guest.domain = guest.mail ? guest.mail.split("@")[1] : "Unknown";
-
-      /* Get Last Sign-in Date using signInActivity
-      const signInResponse = await axios.get(
-        `${graphBaseUrl}/users/${userId}?$select=signInActivity`,
-        { headers }
-      );
-
-      const lastSignIn =
-        signInResponse.data.signInActivity?.lastSignInDateTime || null;
-      guest.lastSignIn = lastSignIn;
-
-      // Calculate inactive days
-      if (lastSignIn) {
-        const lastSignInDate = new Date(lastSignIn);
-        const today = new Date();
-        const diffTime = Math.abs(today - lastSignInDate);
-        guest.inactiveDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      } else {
-        guest.inactiveDays = "Unknown";
-      }
-        */
-
-      // Fetch Active Role Assignments
-      let activeRoles = [];
-      try {
-        const activeRolesResponse = await axios.get(
-          `${graphBaseUrl}/roleManagement/directory/roleAssignments?$filter=principalId eq '${userId}'`,
-          { headers }
-        );
-
-        const roleIds =
-          activeRolesResponse.data.value?.map(
-            (role) => role.roleDefinitionId
-          ) || [];
-
-        // Fetch Role Names
-        activeRoles = await Promise.all(
-          roleIds.map(async (roleId) => {
-            try {
-              const roleDetailResponse = await axios.get(
-                `${graphBaseUrl}/roleManagement/directory/roleDefinitions/${roleId}`,
-                { headers }
-              );
-              return roleDetailResponse.data.displayName; // Get role name
-            } catch (error) {
-              console.error(
-                `⚠️ Error fetching role details for ${roleId}:`,
-                error
-              );
-              return roleId; // Fallback to ID if fetching name fails
-            }
-          })
-        );
-      } catch (error) {
-        console.error(
-          `⚠️ Error fetching active roles for ${guest.displayName}:`,
-          error
-        );
-      }
-
-      // Fetch Eligible Role Assignments
-      let eligibleRoles = [];
-      try {
-        const eligibleRolesResponse = await axios.get(
-          `${graphBaseUrl}/roleManagement/directory/roleEligibilitySchedules?$filter=principalId eq '${userId}'`,
-          { headers }
-        );
-
-        const eligibleRoleIds =
-          eligibleRolesResponse.data.value?.map(
-            (role) => role.roleDefinitionId
-          ) || [];
-
-        // Fetch Role Names
-        eligibleRoles = await Promise.all(
-          eligibleRoleIds.map(async (roleId) => {
-            try {
-              const roleDetailResponse = await axios.get(
-                `${graphBaseUrl}/roleManagement/directory/roleDefinitions/${roleId}`,
-                { headers }
-              );
-              return roleDetailResponse.data.displayName; // Get role name
-            } catch (error) {
-              console.error(
-                `⚠️ Error fetching role details for ${roleId}:`,
-                error
-              );
-              return roleId; // Fallback to ID if fetching name fails
-            }
-          })
-        );
-      } catch (error) {
-        console.error(
-          `⚠️ Error fetching eligible roles for ${guest.displayName}:`,
-          error
-        );
-      }
-
-      // Assign roles
-      guest.roles = { eligible: eligibleRoles, active: activeRoles };
-
-      // Determine Risk Score
-      if (guest.roles.active.length > 0) {
-        guest.riskScore = "High";
-      } else if (guest.roles.eligible.length > 0) {
-        guest.riskScore = "Medium";
-      } else {
-        guest.riskScore = "Low";
-      }
-
-      // Fetch Group Memberships with Group Type
-      let groups = [];
-      try {
-        const groupsResponse = await axios.get(
-          `${graphBaseUrl}/users/${userId}/memberOf?$select=displayName,groupTypes,onPremisesSyncEnabled,mailEnabled,securityEnabled`,
-          { headers }
-        );
-
-        groups =
-          groupsResponse.data.value?.map((group) => {
-            let groupTypeLabel = "Unknown"; // Default label
-
-            if (
-              Array.isArray(group.groupTypes) &&
-              group.groupTypes.includes("DynamicMembership")
-            ) {
-              groupTypeLabel = "Dynamic";
-            } else if (
-              Array.isArray(group.groupTypes) &&
-              group.groupTypes.includes("Unified")
-            ) {
-              groupTypeLabel = "M365";
-            } else if (group.onPremisesSyncEnabled) {
-              groupTypeLabel = "On-Premise";
-            } else if (group.mailEnabled && group.securityEnabled) {
-              groupTypeLabel = "Mail-Security";
-            } else if (group.mailEnabled && !group.securityEnabled) {
-              groupTypeLabel = "Distribution List";
-            } else if (!group.mailEnabled && group.securityEnabled) {
-              groupTypeLabel = "Security";
-            }
-
-            return {
-              name: group.displayName,
-              type: groupTypeLabel,
-            };
-          }) || [];
-
-        // **Remove groups that match an active role name**
-        groups = groups.filter((group) => !activeRoles.includes(group.name));
-      } catch (error) {
-        console.error(
-          `⚠️ Error fetching groups for ${guest.displayName}:`,
-          error
-        );
-      }
-
-      // Assign groups to guest
-      guest.groups = groups;
-    }
-
-    return guests;
-  } catch (error) {
-    console.error("❌ Error fetching guest access data:", error);
-    return [];
-  }
 }
 
 async function getPowerShellScript(accessToken) {
@@ -619,6 +434,5 @@ module.exports = {
   getCompaniesAndDepartments,
   getPowerShellScript,
   getGroupMembershipAnalyzer,
-  getGuestAccessData,
   checkUserPermissions,
 };

@@ -48,10 +48,6 @@ const fetchUserData = async (req, res, next) => {
   }
 };
 
-
-
-
-
 // Route to fetch data for visualization
 router.get("/data", fetchUserData, (req, res) => {
   try {

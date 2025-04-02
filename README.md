@@ -20,6 +20,14 @@ A web application designed to simplify the visualization and management of acces
 - 🎯 Custom Filters: Zoom in on specific departments or companies in seconds.
 - 🔗 Seamless Microsoft Integration: Built for Microsoft Entra ID Governance.  
 
+
+## Roadmap
+
+- bla bla bla
+
+- bla bla bla
+
+
 # Run Locally
 
 Clone the project
@@ -44,6 +52,12 @@ Start the server
 
 ```bash
   npm start
+```
+
+Open you browser
+
+```bash
+  http://localhost:3000
 ```
 
 ## Tech Stack  

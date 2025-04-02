@@ -32,8 +32,6 @@ var builderRouter = require("./routes/builder");
 var nextStepsRouter = require("./routes/nextSteps");
 var deployRouter = require("./routes/deploy");
 var builderManualRouter = require("./routes/buildermanual");
-var lifecycleWorkflowsRouter = require("./routes/lifecycleworkflows");
-var guestaccessRouter = require("./routes/guestaccess");
 
 var app = express();
 
@@ -66,8 +64,6 @@ app.use("/builder", builderRouter);
 app.use("/nextSteps", nextStepsRouter);
 app.use("/deploy", deployRouter);
 app.use("/buildermanual", builderManualRouter);
-app.use("/lifecycleworkflows", lifecycleWorkflowsRouter);
-app.use("/guestaccess", guestaccessRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
