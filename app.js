@@ -1,6 +1,5 @@
 require('dotenv').config();
 require('dotenv').config({ path: './.env' });
-require('@azure/opentelemetry-instrumentation-azure-sdk');
 
 var createError = require('http-errors');
 var express = require('express');
@@ -8,20 +7,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session'); 
-const appInsights = require("applicationinsights");
 
-// Set the connection string from environment variable (ensure it's set in your environment)
-appInsights.setup(process.env.APPLICATIONINSIGHTS_CONNECTION_STRING || 'YOUR_CONNECTION_STRING')
-  .setAutoCollectRequests(true) // Automatically collects HTTP requests
-  .setAutoCollectDependencies(true) // Collects telemetry data for dependencies (SQL, etc.)
-  //.setSamplingPercentage(50)  // Only send 50% of the telemetry data
-  .start();
-
-// You can also set the role name for this instance
-appInsights.defaultClient.context.tags[appInsights.defaultClient.context.keys.cloudRole] = 'MyWebApp';
-
-// Log some basic telemetry to check
-appInsights.defaultClient.trackEvent({ name: "app_start" });
 
 // Import routers
 var indexRouter = require('./routes/index');
@@ -64,6 +50,7 @@ app.use("/builder", builderRouter);
 app.use("/nextSteps", nextStepsRouter);
 app.use("/deploy", deployRouter);
 app.use("/buildermanual", builderManualRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
