@@ -1,0 +1,8 @@
+- [🏠 Home](/)
+- [📚 Docs](/#/README)
+  * [✅ Step 1: Data Quality](step1_data-quality.md)
+  * [🧠 Step 2: Access Package Builder](step2_package-builder.md)
+  * [🛠 Step 2.1: Manual Builder](step2_1_manual-builder.md)
+  * [🚀 Step 3: Deployment Guide](step3_deployment.md)
+- [🔜 Next Steps](next-steps.md)
+- [💬 GitHub](https://github.com/nicowyss/accesspackagebuilder)
