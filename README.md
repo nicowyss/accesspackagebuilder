@@ -13,67 +13,75 @@ A web application designed to simplify the visualization and management of acces
 
 ## Features  
 
-- 🚀 Simplify Access: Visualize group memberships effortlessly.
-- 🌍 Dynamic Visuals: Explore interactive maps of users, departments, and companies.
-- 🤖 Smart Suggestions: Get automated Access Package recommendations tailored to your data.
-- 🔍 Clear Insights: Identify unassigned groups and excluded users with ease.
-- 🎯 Custom Filters: Zoom in on specific departments or companies in seconds.
-- 🔗 Seamless Microsoft Integration: Built for Microsoft Entra ID Governance.  
+- 🚀 **Simplify Access**: Visualize group memberships effortlessly.
+- 🌍 **Dynamic Visuals**: Explore interactive maps of users, departments, and companies.
+- 🤖 **Smart Suggestions**: Get automated Access Package recommendations tailored to your data.
+- 🔍 **Clear Insights**: Identify unassigned groups and excluded users with ease.
+- 🎯 **Custom Filters**: Zoom in on specific departments or companies in seconds.
+- 🔗 **Seamless Microsoft Integration**: Built for Microsoft Entra ID Governance.  
 
+## Roadmap  
 
-## Roadmap
+- [ ] 
+- [ ] 
+- [ ] 
 
-- bla bla bla
+## Run Locally  
 
-- bla bla bla
+### Prerequisites  
 
+#### Software  
+- Install [Node.js](https://nodejs.org/)  
+- Install [Express](https://expressjs.com/)  
 
-# Run Locally
-
-Clone the project
-
+Install dependencies:  
 ```bash
-  git clone https://link-to-project
+npm install
 ```
 
-Go to the project directory
+#### Entra ID App Registration  
+Create an Entra ID app registration (multi-tenant) with the following permissions:  
+- `User.Read.All`  
+- `Directory.Read.All`  
+- `Group.Read.All`  
 
-```bash
-  cd my-project
+You can use a PowerShell script to create the app registration (requires `Application.ReadWrite.All` permissions).  
+[Link to PowerShell script](#)  
+
+#### Environment Variables  
+Add the following to a `.env` file:  
+```env
+AZURE_CLIENT_ID=<your-client-id>
+AZURE_CLIENT_SECRET=<your-client-secret>
 ```
 
-Install dependencies
+### Running the Project  
 
-```bash
-  npm install
-```
+1. **Fork the Repository**  
+   Fork this repo: [Access Package Builder](https://github.com/nicowyss/accesspackagebuilder.git)  
 
-Start the server
+2. **Clone the Repository**  
+   ```bash
+   git clone https://github.com/YOURGITHUBUSERNAME/accesspackagebuilder.git
+   cd accesspackagebuilder
+   ```
 
-```bash
-  npm start
-```
+3. **Start the Server**  
+   ```bash
+   npm start
+   ```
 
-Open you browser
+4. **Access the Application**  
+   Open your browser and navigate to:  
+   [http://localhost:3000](http://localhost:3000)  
 
-```bash
-  http://localhost:3000
-```
+## Deployment  
 
-## Tech Stack  
+This project can be deployed using:  
+- **Azure App Service**  
+- **GitHub Actions**  
 
-### Client  
-- ...
-
-### Server  
-- Node.js  
-- Express  
-
-### Deployment  
-- Azure App Service  
-- GitHub Actions  
-
-## Authors  
+## Author(s)  
 
 - [@nicowyss](https://github.com/nicowyss)  
 
