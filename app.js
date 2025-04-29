@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session'); 
 
+const isProd = process.env.NODE_ENV === 'production';
 
 // Import routers
 var indexRouter = require('./routes/index');
@@ -40,6 +41,11 @@ app.use(
     cookie: { secure: process.env.NODE_ENV === 'production', maxAge: 60 * 60 * 1000 }, // Set true if using HTTPS
   })
 );
+
+app.use((req, res, next) => {
+  res.locals.insightsConnectionString = isProd ? process.env.APPLICATIONINSIGHTS_CONNECTION_STRING : null;
+  next();
+});
 
 // Use routers
 app.use('/', indexRouter);

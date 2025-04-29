@@ -3,13 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Access Package Builder helps you visualize Microsoft Entra ID governance using automation and intuitive tools." />
     <title>Access Package Builder</title>
     <link rel="stylesheet" href="/stylesheets/landing.css" />
     <link rel="icon" href="/images/favicon.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
@@ -24,10 +21,8 @@
     <div>
       <header class="header">
         <div class="header-content">
-          <a href="https://cloudfil.ch/about" target="_blank">
-            <div class="logo">
-              <img src="/images/logo.png" alt="Logo" />
-            </div>
+          <a href="https://cloudfil.ch/about" class="logo" target="_blank">
+              <img src="/images/logo.png" alt="Access Package Builder Logo" />
           </a>
           <div class="docs-login">
             <a href="/docs" class="docs-btn">Docs</a>
@@ -183,7 +178,6 @@
       <!-- Walkthrough / Demo Section -->
       <section class="demo-section" data-aos="fade-up">
         <div class="demo-container">
-          <!-- Left: Text Content -->
           <div class="demo-text">
             <h2 class="demo-title">Walkthrough</h2>
             <p class="demo-description">
@@ -193,8 +187,6 @@
             </p>
             <a href="/auth/login" class="try-btn demo-btn">Get Started</a>
           </div>
-
-          <!-- Right: Video -->
           <div class="demo-video">
             <video controls autoplay loop muted playsinline>
               <source
@@ -252,5 +244,28 @@
         once: true, // Animates only once
       });
     </script>
+    <% if (insightsConnectionString) { %>
+      <script type="text/javascript">
+        var appInsights = window.appInsights || function (a) {
+          function b(a) {
+            c[a] = function () {
+              var b = arguments;
+              c.queue.push(function () { c[a].apply(c, b) })
+            }
+          }
+          var c = { config: a }, d = document, e = window;
+          c.queue = [], c.version = "2.0";
+          for (var f = ["trackPageView", "trackEvent", "trackException", "trackTrace", "trackDependencyData", "setAuthenticatedUserContext", "clearAuthenticatedUserContext", "flush"], g = 0; g < f.length; g++) b(f[g]);
+          var h = d.createElement("script");
+          h.src = "https://js.monitor.azure.com/scripts/b/ai.2.min.js";
+          d.getElementsByTagName("head")[0].appendChild(h);
+          return c;
+        }({
+          connectionString: "<%= insightsConnectionString %>"
+        });
+        window.appInsights = appInsights;
+        appInsights.trackPageView();
+      </script>
+      <% } %>      
   </body>
 </html>
