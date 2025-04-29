@@ -6,66 +6,251 @@
     <title>Access Package Builder</title>
     <link rel="stylesheet" href="/stylesheets/landing.css" />
     <link rel="icon" href="/images/favicon.png" />
-    <!-- Link to your CSS -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <div>
-      <!-- Header Section -->
       <header class="header">
-        <a href="https://cloudfil.ch/about" target="_blank">
-        <div class="logo">
-          <img src="/images/logo.png" alt="Logo" />
-        </div>
-        </a>
-        <div class="login">
-          <a href="/auth/login" class="login-btn">Log In</a>
+        <div class="header-content">
+          <a href="https://cloudfil.ch/about" target="_blank">
+            <div class="logo">
+              <img src="/images/logo.png" alt="Logo" />
+            </div>
+          </a>
+          <div class="docs-login">
+            <a href="/docs" class="docs-btn">Docs</a>
+            <a href="/auth/login" class="login-btn">Log In</a>
+          </div>
+          <div class="social-icons">
+            <a
+              href="https://www.linkedin.com/in/nico-wyss/"
+              target="_blank"
+              class="social-icon"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a
+              href="https://github.com/nicowyss/accesspackagebuilder"
+              target="_blank"
+              class="social-icon"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://cloudfil.ch/blog/" class="social-icon">
+              <i class="fas fa-blog"></i>
+            </a>
+          </div>
         </div>
       </header>
+
       <!-- Title Section -->
-      <section class="title-section">
-        <h1 class="big-title">Access Package<br> Builder</h1>
-      </section>
-      <!-- Slogan Section -->
-      <section class="slogan-section">
-        <p class="slogan-title">✨ What Awaits You When You Click ‘Try it Free ✨</p>
-        <div class="slogan-content">
-          <p>🚀 <strong>Simplify Access</strong>: Visualize group memberships effortlessly.</p>
-          <p>🌍 <strong>Dynamic Visuals</strong>: Explore interactive maps of users, departments, and companies.</p>
-          <p>🤖 <strong>Smart Suggestions</strong>: Get automated Access Package recommendations tailored to your data.</p>
-          <p>🔍 <strong>Clear Insights</strong>: Identify unassigned groups and excluded users with ease.</p>
-          <p>🎯 <strong>Custom Filters</strong>: Zoom in on specific departments or companies in seconds.</p>
-          <p>🔗 <strong>Seamless Microsoft Integration</strong>: Built for Microsoft Entra ID Governance.</p>
+      <section class="hero-section" data-aos="fade-up">
+        <div class="hero-container">
+          <!-- Left: Title and Subtitle -->
+          <div class="hero-text">
+            <h1 class="big-title">
+              Access Package <span class="wobble">B</span>uilder
+            </h1>
+            <h2 class="subtitle">
+              Simplify your Microsoft Entra ID Identity Governance with my
+              intuitive Access Package Builder.
+            </h2>
+            <a href="/auth/login" class="try-btn">Try it Free</a>
+            <div class="tech-stack">
+              <div class="tech-item">
+                <i class="fa-brands fa-github"></i>
+                <p>Open Source</p>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-terminal"></i>
+                <p>PowerShell</p>
+              </div>
+              <div class="tech-item">
+                <i class="fa-brands fa-node-js"></i>
+                <p>Node.js</p>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-book"></i>
+                <p>Docsify</p>
+              </div>
+              <div class="tech-item">
+                <i class="fa-brands fa-square-js"></i>
+                <p>JavaScript</p>
+              </div>
+              <div class="tech-item">
+                <i class="fas fa-cloud"></i>
+                <p>Microsoft Cloud</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Image or Animation -->
+          <div class="hero-image">
+            <img
+              src="/images/landingpicture.png"
+              alt="Access Package Builder Event"
+            />
+          </div>
         </div>
       </section>
 
-      <!-- Try it Free Button Section -->
-      <section class="button-section">
-        <a href="/auth/login" class="try-btn">Try it Free</a>
-      </section>
-      <section class="footer">
-        <div class="footer-content">
-          <video controls autoplay loop muted>
-            <source src="/images/accesspackagebuilder-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-          <p>© 2025 cloudfil. All rights reserved.</p>
+      <!-- Features Section -->
+      <section class="features-section" data-aos="fade-up">
+        <h2 class="features-title">Features</h2>
+        <p class="features-subtitle">
+          Want to learn more? Check out the <a href="/docs">Docs.</a>
+        </p>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-users"></i></div>
+            <h3 class="feature-title">Simplified Access</h3>
+            <p class="feature-text">
+              Effortlessly visualize user group memberships.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-network-wired"></i></div>
+            <h3 class="feature-title">Dynamic Visuals</h3>
+            <p class="feature-text">
+              Explore maps of users, departments, and companies.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-robot"></i></div>
+            <h3 class="feature-title">Smart Suggestions</h3>
+            <p class="feature-text">
+              Get automated Access Package recommendations tailored to your
+              data.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-search"></i></div>
+            <h3 class="feature-title">Clear Insights</h3>
+            <p class="feature-text">
+              Identify unassigned groups and optimize your governance.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-filter"></i></div>
+            <h3 class="feature-title">Custom Filters</h3>
+            <p class="feature-text">
+              Focus on specific departments, companies, or users easily.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-thumbs-up"></i></div>
+            <h3 class="feature-title">Data Quality</h3>
+            <p class="feature-text">
+              Identify gaps of not maintained user attributes.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-truck"></i></div>
+            <h3 class="feature-title">Deployment</h3>
+            <p class="feature-text">
+              Show a easy way to deploy your Access Package in Microsoft Entra
+              ID with PowerShell.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-link"></i></div>
+            <h3 class="feature-title">Seamless Integration</h3>
+            <p class="feature-text">
+              Built for a smooth Microsoft Entra ID Governance experience.
+            </p>
+          </div>
         </div>
       </section>
-</div>
-<script
-data-name="BMC-Widget"
-data-cfasync="false"
-src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-data-id="nicowyss"
-data-description="Support me on Buy me a coffee!"
-data-color="#347DFE"
-data-position="Right"
-data-x_margin="18"
-data-y_margin="18"
-></script>
+      <!-- Walkthrough / Demo Section -->
+      <section class="demo-section" data-aos="fade-up">
+        <div class="demo-container">
+          <!-- Left: Text Content -->
+          <div class="demo-text">
+            <h2 class="demo-title">Walkthrough</h2>
+            <p class="demo-description">
+              Experience how easy it is to visualize your tailored Access
+              Packages with just a few clicks. Watch the quick walkthrough to
+              see the smart automation and clear insights in action.
+            </p>
+            <a href="/auth/login" class="try-btn demo-btn">Get Started</a>
+          </div>
+
+          <!-- Right: Video -->
+          <div class="demo-video">
+            <video controls autoplay loop muted playsinline>
+              <source
+                src="/images/accesspackagebuilder-video.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer Section -->
+      <footer class="site-footer">
+        <div class="footer-container">
+          <div class="footer-logo">
+            <img src="/images/logo.png" alt="Access Package Builder Logo" />
+          </div>
+          <div class="footer-links">
+            <a href="https://cloudfil.ch/about" target="_blank">About</a>
+            <a href="/docs">Docs</a>
+            <a
+              href="https://github.com/nicowyss/accesspackagebuilder"
+              target="_blank"
+              >GitHub</a
+            >
+          </div>
+          <div class="footer-copy">
+            2025 | Made with ❤️ by
+            <a href="https://www.linkedin.com/in/nico-wyss/" target="_blank"
+              >Nico Wyss</a
+            >
+            | Open-source Project | © MIT License
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script
+      data-name="BMC-Widget"
+      data-cfasync="false"
+      src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+      data-id="nicowyss"
+      data-description="Support me on Buy me a coffee!"
+      data-color="#347DFE"
+      data-position="Right"
+      data-x_margin="18"
+      data-y_margin="18"
+    ></script>
+    <!-- AOS Animate on Scroll JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true, // Animates only once
+      });
+    </script>
   </body>
 </html>

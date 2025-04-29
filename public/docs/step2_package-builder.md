@@ -1,13 +1,17 @@
-# 🧠 Step 2: Access Package Builder (Automatic)
+# Step 2: Access Package Builder (Automatic)
 
 In this step, the Access Package Builder visualizes your
-organization's structure to help you understand how users, groups,
-departments, and companies are connected. The tool displays an
+organization's structure to help you understand how `users, groups,
+departments, and companies` are connected. The tool displays an
 interactive map where you can see how different entities in your
 organization, such as users, groups, and departments, relate to each
 other. This visualization provides you with a clearer picture of
 your company's structure and how your current permission management
 is set up.
+
+> 📸 Example Map View
+
+![Map View](http://localhost:3000/docs/images/accesspackagebuilder-map.png)
 
 ## 🧬 Algorithm Process
 
@@ -23,16 +27,16 @@ based on their role, group, department, and company affiliation.
 
 The suggested Access Packages are organized into three key groups:
 
-- Default
+- **Default:**
   This package includes a
   summary of all groups where users are assigned across the
   organization. It serves as a baseline for general access.
-- Company
+- **Company:**
   This package groups
   together users from the same company, combining relevant resources
   and permissions for those users who work within the same
   organizational entity.
-- Department
+- **Department:**
   This package displays
   groups of users within the same department, making it easier to
   manage access for teams working in specific functions within the
@@ -45,11 +49,16 @@ by the algorithm will help streamline the process of assigning
 access, ensuring that users have the right permissions based on
 their roles and affiliations within the company.
 
+> 📸 Suggestions from the Access Package Builder Algorithm based on your Data:
+
+![Algorithm Recommendations](http://localhost:3000/docs/images/accesspackagebuilder-algo.png)
+
 With this visualization and intelligent suggestions, you are one
 step closer to improving access management and ensuring that
 permissions are accurately aligned with the organizational
 structure.
 
-> 📸 Add UI screenshots or diagram showing the "map view" of structure.
 
-> 🧠 Link to any relevant Microsoft docs or Access Management best practices.
+> 🧠 Link to Microsoft docs or Access Management best practices.
+
+[Microsoft Docs](https://learn.microsoft.com/en-us/entra/id-governance/entitlement-management-access-package-create)

@@ -1,4 +1,4 @@
-# ✅ Step 1: Data Quality
+# Step 1: Data Quality
 
 Data quality is a cornerstone of a strong and secure Identity
 Governance framework. In the future, as organizations increasingly
@@ -12,8 +12,8 @@ risks, and ensuring compliance.
 
 As part of this process, your Identity Governance Landscape will
 display a comprehensive overview of your organization's current user
-data. This includes crucial attributes like department, company
-name, job title, group memberships, and more. These data points are
+data. This includes crucial attributes like `department, company
+name, job title, group memberships, and more`. These data points are
 invaluable, as they provide the foundation for understanding your
 organization's structure and users' roles within it. Without
 accurate data, even the most advanced algorithms cannot make precise
@@ -32,11 +32,15 @@ resources they need. By cleaning and enriching your user data, you
 are taking the first step toward reducing risks and increasing
 security across your organization.
 
-## Prepare Your Data for Step 2: Access Package Builder
+## 📝 Prepare Your Data for Step 2: Access Package Builder
 
 Before moving on to the next step, it's important to ensure that
 your company’s user data is in top shape.
-Try to elimate every RED Column!
+
+
+> 📸 Try to elimate every RED Column!
+
+![App Screenshot](http://localhost:3000/docs/images/userattributelist-bad.png)
 
 The Access Package Builder will rely on this data to make detailed,
 algorithm-based suggestions about the appropriate access for each
@@ -46,12 +50,9 @@ Packages. Start by reviewing and updating your organization’s user
 data now this is the foundation for a successful and secure
 transition to automated access management.
 
-In summary: Ensure that your user data is accurate
+**In summary:** Ensure that your user data is accurate
 and up-to-date before moving to Step 2. High-quality data is crucial
 for the success of your Identity Governance strategy, and it will
 greatly enhance the performance of the Access Package Builder when
 it's time to assign the right resources to the right people.
 
-> 📸 Add screenshot or table comparing good vs bad user attributes.
-
-> 🧪 Insert tips on how to verify data completeness (optional command lines, scripts).
