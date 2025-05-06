@@ -35,12 +35,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Configure session middleware
 app.use(
   session({
-    secret: 'your-secret-key', // Replace with a secure key
+    secret: 'your-secret-key',
     resave: false,
-    saveUninitialized: true,
-    cookie: { secure: process.env.NODE_ENV === 'production', maxAge: 60 * 60 * 1000 }, // Set true if using HTTPS
+    saveUninitialized: false, // Do not set cookies until something is stored in session
+    cookie: {
+      secure: isProd,                // Only send cookies over HTTPS in production
+      httpOnly: true,                // Prevent client-side JS access
+      sameSite: isProd ? 'None' : 'Lax', // safer default for local dev
+      maxAge: 60 * 60 * 1000         // 1 hour session expiration
+    }
   })
 );
+
 
 app.use((req, res, next) => {
   res.locals.insightsConnectionString = isProd ? process.env.APPLICATIONINSIGHTS_CONNECTION_STRING : null;
