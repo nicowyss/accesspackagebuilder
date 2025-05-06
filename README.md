@@ -1,3 +1,5 @@
+![Logo](https://accesspackagebuilder.dev/images/apb-logo-github.png)
+
 # Access Package Builder  
 
 A web application designed to simplify the visualization and management of access packages in Entra ID. This tool helps administrators design access packages efficiently, ensuring secure and streamlined user access.  

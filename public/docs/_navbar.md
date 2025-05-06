@@ -1,2 +1,2 @@
-[🏠 Home](https://accesspackagebuilder.azurewebsites.net/)
+[🏠 Home](https://accesspackagebuilder.dev/)
 [📘 GitHub](https://github.com/nicowyss/accesspackagebuilder)

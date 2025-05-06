@@ -53,6 +53,9 @@ body, html {
   text-align: center;
   margin-bottom: 20px;
 }
+.logo img {
+  background: #ffffff;
+}
 
 .sidebar .logo img {
   max-width: 150px;
@@ -480,7 +483,7 @@ div.outerBorder {
 
 /* Refresh Button */
 #refreshButton {
-  background: linear-gradient(to bottom right, #04D367, #347DFE); /* Updated colors */
+  background: #347DFE; /* Updated colors */
   border: 0;
   border-radius: 12px;
   color: #FFFFFF;
