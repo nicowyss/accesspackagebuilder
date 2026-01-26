@@ -20,9 +20,9 @@ router.get("/", (req, res, next) => {
       });
     }
     res.render("index", {
-      title: "Access Package Builder",
+      title: "Access Package Builder | Microsoft Entra Access Packages & Identity Governance Tool",
       description:
-        "Quickly analyze Microsoft Entra ID users / groups with Access Package Builder – the simplest way to start with identity governance.",
+        "Free tool to build and automate Microsoft Entra ID Access Packages for Identity Governance. Visualize users, groups, and create Access Packages with PowerShell. Simplify Entra Entitlement Management.",
       canonical: "https://accesspackagebuilder.dev/",
     }); 
   }

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getUserInfo, getUsersList, getUserGroups } = require("../auth"); // Import functions from core auth.js
+const { getUserInfo, getUsersList, getUserGroupsBatched } = require("../auth"); // Import functions from core auth.js
 
 // Route to render the buildermanual page
 router.get("/", async (req, res) => {
@@ -55,30 +55,25 @@ router.get("/role-matrix", async (req, res) => {
     const noJobTitleCount = filteredUsers.filter(u => !u.jobTitle).length;
     const usersWithJobTitle = filteredUsers.filter(u => u.jobTitle);
 
-    // 🧩 4️⃣ Build matrix data
+    // 🧩 4️⃣ Build matrix data using batch API
     const roleMatrix = [];
     const groupSet = new Set();
 
-    const chunkSize = 50;
-    for (let i = 0; i < filteredUsers.length; i += chunkSize) {
-      const chunk = filteredUsers.slice(i, i + chunkSize);
+    const CHUNK_SIZE = 100;
+    for (let i = 0; i < filteredUsers.length; i += CHUNK_SIZE) {
+      const chunk = filteredUsers.slice(i, i + CHUNK_SIZE);
+      const userGroupsMap = await getUserGroupsBatched(chunk, accessToken);
 
-      const chunkResults = await Promise.all(
-        chunk.map(async (user) => {
-          const groups = await getUserGroups(user.id, accessToken);
-          return { jobTitle: user.jobTitle, groups };
-        })
-      );
-
-      chunkResults.forEach((entry) => {
-        if (!entry.jobTitle) return;
+      chunk.forEach((user) => {
+        const groups = userGroupsMap.get(user.id) || [];
+        if (!user.jobTitle) return;
 
         const roleEntry =
-          roleMatrix.find((r) => r.role === entry.jobTitle) ||
-          (roleMatrix.push({ role: entry.jobTitle, groups: [] }),
-          roleMatrix.find((r) => r.role === entry.jobTitle));
+          roleMatrix.find((r) => r.role === user.jobTitle) ||
+          (roleMatrix.push({ role: user.jobTitle, groups: [] }),
+          roleMatrix.find((r) => r.role === user.jobTitle));
 
-        entry.groups.forEach((g) => {
+        groups.forEach((g) => {
           if (!roleEntry.groups.includes(g.displayName)) {
             roleEntry.groups.push(g.displayName);
           }
@@ -118,19 +113,20 @@ router.get("/role-users/:jobTitle", async (req, res) => {
       (u) => u.jobTitle && u.jobTitle.toLowerCase() === jobTitle.toLowerCase()
     );
 
-    const detailed = await Promise.all(
-      matched.map(async (u) => {
-        const groups = await getUserGroups(u.id, accessToken);
-        return {
-          id: u.id,
-          displayName: u.displayName,
-          userPrincipalName: u.userPrincipalName,
-          jobTitle: u.jobTitle,
-          department: u.department,
-          groups: groups.map((g) => g.displayName),
-        };
-      })
-    );
+    // Use batch API to fetch groups for all matched users at once
+    const userGroupsMap = await getUserGroupsBatched(matched, accessToken);
+
+    const detailed = matched.map((u) => {
+      const groups = userGroupsMap.get(u.id) || [];
+      return {
+        id: u.id,
+        displayName: u.displayName,
+        userPrincipalName: u.userPrincipalName,
+        jobTitle: u.jobTitle,
+        department: u.department,
+        groups: groups.map((g) => g.displayName),
+      };
+    });
 
     res.json(detailed);
   } catch (err) {

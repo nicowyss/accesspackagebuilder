@@ -5,6 +5,8 @@ Disallow: /builder/
 Disallow: /deploy/
 Disallow: /buildermanual/
 Disallow: /nextSteps/
+Disallow: /roles/
+Disallow: /test/
 
 Allow: /
 Allow: /readiness

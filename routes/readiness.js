@@ -18,9 +18,9 @@ router.get("/", (req, res, next) => {
       });
     }
     res.render("readiness", {
-      title: "Access Package Builder - Readiness Check",
+      title: "Entra Access Package Readiness Check | Identity Governance Assessment",
       description:
-        "Check your environment's readiness for Access Package automation in Microsoft Entra ID.",
+        "Assess your Microsoft Entra ID environment readiness for Access Packages and Identity Governance. Free readiness checklist for Entra Entitlement Management implementation.",
       canonical: "https://accesspackagebuilder.dev/readiness",
     });
   }

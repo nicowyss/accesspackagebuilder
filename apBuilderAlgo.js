@@ -1,119 +1,154 @@
+/**
+ * Optimized Access Package Builder Algorithm
+ * Uses Sets and Maps for O(1) lookups instead of O(n) array operations
+ */
 function findCommonGroups(users) {
-    const result = {
-        defaultAccessPackage: [],
-        companyAccessPackages: {},
-        departmentAccessPackages: {},
-        unassignedGroups: []
-    };
+  const result = {
+    defaultAccessPackage: [],
+    companyAccessPackages: {},
+    departmentAccessPackages: {},
+    unassignedGroups: [],
+    excludedUsers: [],
+  };
 
-    // console.log("Starting algorithm to assign access packages...");
-
-    // Step 0: Exclude users without companyName or department
-    const excludedUsers = users.filter(
-        user => !user.companyName || !user.department || user.userAccountEnabled === false
-      );
-      result.excludedUsers = excludedUsers.map(user => ({
+  // Step 0: Filter users upfront - Use a single pass
+  const filteredUsers = [];
+  for (const user of users) {
+    if (!user.companyName || !user.department || user.userAccountEnabled === false) {
+      result.excludedUsers.push({
         userId: user.userId,
         userAccountEnabled: user.userAccountEnabled,
         userType: user.userType,
         userName: user.displayName,
-      }));
-      
-      const filteredUsers = users.filter(
-        user => user.companyName && user.department && user.userAccountEnabled !== false
-      );
-      
-    // Step 1: Find default access package (common to all users)
-    const allGroups = filteredUsers.map(user => user.groups.map(group => group.displayName));
-    const defaultAccessPackage = allGroups.reduce((common, currentGroups) =>
-        common.filter(group => currentGroups.includes(group))
-    );
-    result.defaultAccessPackage = defaultAccessPackage;
-    // console.log("Step 1: Default Access Package determined:", result.defaultAccessPackage);
-
-    // Step 2: Assign company-specific access packages
-    const companyGroups = {};
-    filteredUsers.forEach(user => {
-        if (!companyGroups[user.companyName]) {
-            companyGroups[user.companyName] = [];
-        }
-        companyGroups[user.companyName].push(user.groups.map(group => group.displayName));
-    });
-
-    // console.log("Step 2: Collected groups for each company:", companyGroups);
-
-    for (const company in companyGroups) {
-        // console.log(`Processing company: ${company}`);
-        const companyGroupList = companyGroups[company].map(groups => groups.sort());
-        // console.log(`Normalized groups for company ${company}:`, companyGroupList);
-
-        const commonCompanyGroups = companyGroupList.reduce((common, currentGroups) =>
-            common.filter(group => currentGroups.includes(group))
-        ).filter(group => !result.defaultAccessPackage.includes(group));
-
-        result.companyAccessPackages[company] = commonCompanyGroups;
-        // console.log(`Common groups for company ${company}:`, commonCompanyGroups);
+      });
+    } else {
+      filteredUsers.push(user);
     }
+  }
 
-    // Step 3: Assign department-specific access packages
-    const departmentGroups = {};
-    filteredUsers.forEach(user => {
-        if (!departmentGroups[user.department]) {
-            departmentGroups[user.department] = [];
-        }
-        departmentGroups[user.department].push(user.groups.map(group => group.displayName));
-    });
-
-    // console.log("Step 3: Collected groups for each department:", departmentGroups);
-
-    const assignedGroups = new Set(result.defaultAccessPackage);
-
-    for (const department in departmentGroups) {
-        // console.log(`Processing department: ${department}`);
-        const departmentGroupList = departmentGroups[department].map(groups => groups.sort());
-        // console.log(`Normalized groups for department ${department}:`, departmentGroupList);
-
-        const commonDepartmentGroups = departmentGroupList.reduce((common, currentGroups) =>
-            common.filter(group => currentGroups.includes(group))
-        ).filter(group => 
-            !result.defaultAccessPackage.includes(group) &&
-            !Object.values(result.companyAccessPackages).flat().includes(group)
-        );
-
-        result.departmentAccessPackages[department] = commonDepartmentGroups;
-        // console.log(`Common groups for department ${department}:`, commonDepartmentGroups);
-
-        commonDepartmentGroups.forEach(group => {
-            // console.log(`Group: ${group} assigned to DepartmentAccessPackage ${department}`);
-            assignedGroups.add(group);
-        });
-    }
-
-    // Step 4: Collect unassigned groups
-    filteredUsers.forEach(user => {
-        user.groups.forEach(group => {
-            const groupName = group.displayName;
-            const groupType = group.type;
-            if (
-                !assignedGroups.has(groupName) &&
-                !Object.values(result.companyAccessPackages).flat().includes(groupName) &&
-                !Object.values(result.departmentAccessPackages).flat().includes(groupName)
-            ) {
-                result.unassignedGroups.push({
-                    userId: user.userId,
-                    userName: user.displayName,
-                    userCompany: user.companyName,
-                    userDepartment: user.department,
-                    group: groupName,
-                    groupType: groupType    
-                });
-            }
-        });
-    });
-
-    // console.log("Step 4: Unassigned groups collected:", result.unassignedGroups);
-
+  if (filteredUsers.length === 0) {
     return result;
+  }
+
+  // Pre-compute: Create lookup structures using Sets for O(1) operations
+  const userGroupSets = new Map(); // userId -> Set of group names
+  const companyUsers = new Map();   // companyName -> array of userIds
+  const departmentUsers = new Map(); // department -> array of userIds
+  const allGroupNames = new Set();
+
+  for (const user of filteredUsers) {
+    const groupSet = new Set(user.groups.map((g) => g.displayName));
+    userGroupSets.set(user.userId, groupSet);
+
+    // Collect all group names
+    for (const g of user.groups) {
+      allGroupNames.add(g.displayName);
+    }
+
+    // Group by company
+    if (!companyUsers.has(user.companyName)) {
+      companyUsers.set(user.companyName, []);
+    }
+    companyUsers.get(user.companyName).push(user.userId);
+
+    // Group by department
+    if (!departmentUsers.has(user.department)) {
+      departmentUsers.set(user.department, []);
+    }
+    departmentUsers.get(user.department).push(user.userId);
+  }
+
+  // Step 1: Find default access package (groups common to ALL users)
+  const defaultGroups = new Set();
+  for (const groupName of allGroupNames) {
+    let isCommonToAll = true;
+    for (const [, groupSet] of userGroupSets) {
+      if (!groupSet.has(groupName)) {
+        isCommonToAll = false;
+        break;
+      }
+    }
+    if (isCommonToAll) {
+      defaultGroups.add(groupName);
+    }
+  }
+  result.defaultAccessPackage = Array.from(defaultGroups);
+
+  // Step 2: Company-specific access packages
+  for (const [companyName, userIds] of companyUsers) {
+    const companyCommonGroups = [];
+    
+    for (const groupName of allGroupNames) {
+      if (defaultGroups.has(groupName)) continue;
+
+      let isCommonToCompany = true;
+      for (const userId of userIds) {
+        const userGroups = userGroupSets.get(userId);
+        if (!userGroups.has(groupName)) {
+          isCommonToCompany = false;
+          break;
+        }
+      }
+      if (isCommonToCompany) {
+        companyCommonGroups.push(groupName);
+      }
+    }
+    result.companyAccessPackages[companyName] = companyCommonGroups;
+  }
+
+  // Create a Set of all company-assigned groups for fast lookup
+  const companyAssignedGroups = new Set(
+    Object.values(result.companyAccessPackages).flat()
+  );
+
+  // Step 3: Department-specific access packages
+  const assignedGroups = new Set([...defaultGroups, ...companyAssignedGroups]);
+
+  for (const [department, userIds] of departmentUsers) {
+    const departmentCommonGroups = [];
+
+    for (const groupName of allGroupNames) {
+      if (assignedGroups.has(groupName)) continue;
+
+      let isCommonToDept = true;
+      for (const userId of userIds) {
+        const userGroups = userGroupSets.get(userId);
+        if (!userGroups.has(groupName)) {
+          isCommonToDept = false;
+          break;
+        }
+      }
+      if (isCommonToDept) {
+        departmentCommonGroups.push(groupName);
+      }
+    }
+    result.departmentAccessPackages[department] = departmentCommonGroups;
+  }
+
+  // Add department groups to assigned set
+  for (const groups of Object.values(result.departmentAccessPackages)) {
+    for (const g of groups) {
+      assignedGroups.add(g);
+    }
+  }
+
+  // Step 4: Collect unassigned groups (using Sets for O(1) lookup)
+  for (const user of filteredUsers) {
+    for (const group of user.groups) {
+      if (!assignedGroups.has(group.displayName)) {
+        result.unassignedGroups.push({
+          userId: user.userId,
+          userName: user.displayName,
+          userCompany: user.companyName,
+          userDepartment: user.department,
+          group: group.displayName,
+          groupType: group.type,
+        });
+      }
+    }
+  }
+
+  return result;
 }
 
 module.exports = { findCommonGroups };

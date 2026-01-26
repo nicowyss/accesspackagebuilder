@@ -6,7 +6,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var session = require('express-session'); 
+var session = require('express-session');
+var compression = require('compression'); // Gzip compression for responses
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -21,6 +22,7 @@ var deployRouter = require("./routes/deploy");
 var builderManualRouter = require("./routes/buildermanual");
 var readinessRouter = require("./routes/readiness");
 var rolesRouter = require("./routes/roles");
+var testRouter = require("./routes/test"); // Performance testing routes
 
 var app = express();
 
@@ -28,11 +30,21 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('trust proxy', 1); // Trust the first proxy
+
+// Performance: Gzip compression for all responses
+app.use(compression());
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+// Performance: Static files with ETags and cache headers
+app.use(express.static(path.join(__dirname, 'public'), {
+  etag: true,           // Enable ETags for cache validation
+  maxAge: '1d',         // Cache static assets for 1 day
+  lastModified: true    // Use Last-Modified headers
+}));
 
 // Configure session middleware
 app.use(
@@ -66,6 +78,7 @@ app.use("/deploy", deployRouter);
 app.use("/buildermanual", builderManualRouter);
 app.use("/readiness", readinessRouter);
 app.use("/roles", rolesRouter);
+app.use("/test", testRouter); // Performance testing: /test/algorithm, /test/compare-full
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -82,8 +95,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-// Serve static files from the "public" directory
-app.use(express.static('public'));
 
 module.exports = app;

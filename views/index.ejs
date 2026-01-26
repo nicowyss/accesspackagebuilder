@@ -8,6 +8,7 @@
     <title><%= title %></title>
     <meta name="description" content="<%= description %>" />
     <link rel="canonical" href="<%= canonical %>" />
+    <meta name="msvalidate.01" content="BF20ECE42276F8194BCBE62567F305C3" />
 
     <!-- Open Graph (social previews) -->
     <meta property="og:title" content="<%= title %>" />
@@ -27,21 +28,83 @@
       name="twitter:image"
       content="https://accesspackagebuilder.dev/images/apb-logo.png"
     />
+    <!-- SEO Keywords -->
+    <meta name="keywords" content="Access Packages, Entra Access Packages, Microsoft Entra ID, Identity Governance, Entra Identity Governance, Access Package Builder, Microsoft Entra Access Packages, Azure AD Access Packages, Entitlement Management, Identity Lifecycle Management" />
+    <meta name="author" content="Nico Wyss" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Schema.org SoftwareApplication -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "Access Package Builder",
+        "name": "Access Package Builder for Microsoft Entra",
+        "alternateName": ["Entra Access Package Builder", "Access Package Tool"],
         "url": "https://accesspackagebuilder.dev",
-        "image": "https://accesspackagebuilder.dev/images/apb-logo.png,
+        "image": "https://accesspackagebuilder.dev/images/apb-logo.png",
         "author": {
           "@type": "Person",
           "name": "Nico Wyss",
           "url": "https://www.linkedin.com/in/nico-wyss/"
         },
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "All",
-        "description": "Access Package Builder helps you visualize and automate Microsoft Entra ID governance setup with intuitive tools."
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory": "Identity Governance",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Free open-source tool to build and automate Microsoft Entra ID Access Packages for Identity Governance. Visualize user group memberships and create Access Packages with PowerShell automation.",
+        "featureList": [
+          "Access Package visualization",
+          "Microsoft Entra ID integration",
+          "PowerShell deployment scripts",
+          "User group analysis",
+          "Identity Governance automation"
+        ]
+      }
+    </script>
+    
+    <!-- Schema.org FAQPage for rich snippets -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What are Access Packages in Microsoft Entra ID?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Access Packages in Microsoft Entra ID (formerly Azure AD) are bundles of resources that users can request access to. They are part of Entitlement Management and help organizations automate access governance by grouping applications, groups, and SharePoint sites together."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does Access Package Builder help with Entra Identity Governance?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Access Package Builder analyzes your Microsoft Entra ID users and groups, then automatically suggests Access Packages based on department structures and group memberships. It generates PowerShell scripts to deploy these packages, saving hours of manual configuration."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Access Package Builder free to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Access Package Builder is completely free and open-source. It requires read-only permissions (User.Read.All, Directory.Read.All, Group.Read.All) to analyze your tenant."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What permissions does Access Package Builder need?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Access Package Builder requires User.Read.All, Directory.Read.All, and Group.Read.All permissions. These are read-only permissions that allow the tool to analyze users and groups without making any changes to your tenant."
+            }
+          }
+        ]
       }
     </script>
 
@@ -110,11 +173,11 @@
           <!-- Left: Title and Subtitle -->
           <div class="hero-text">
             <h1 class="big-title">
-              Access Package <span class="wobble">B</span>uilder
+              <span class="sr-only">Microsoft Entra</span> Access Package <span class="wobble">B</span>uilder
             </h1>
             <h2 class="subtitle">
-              Simplify your Microsoft Entra ID Identity Governance with my
-              intuitive Access Package Builder.
+              The free open-source tool for Microsoft Entra ID Identity Governance. 
+              Build Access Packages automatically with smart visualization and PowerShell automation.
             </h2>
             <a href="/auth/login" class="try-btn">Try it Free</a>
             <div class="tech-stack">
@@ -149,7 +212,7 @@
           <div class="hero-image">
             <img
               src="/images/landingpicture.png"
-              alt="Access Package Builder Event"
+              alt="Microsoft Entra Access Package Builder Dashboard - Visualize Identity Governance"
             />
           </div>
         </div>
@@ -157,12 +220,10 @@
 
       <!-- Features Section -->
       <section class="features-section" data-aos="fade-up">
-        <h2 class="features-title">Features</h2>
+        <h2 class="features-title">Entra Access Package Features</h2>
         <p class="features-subtitle">
-          Access Package Builder simplifies Microsoft Entra ID access package
-          automation <br />
-          with visual tools, PowerShell integration, and best practices for
-          identity governance.
+          Access Package Builder simplifies Microsoft Entra ID Identity Governance and Entitlement Management <br />
+          with visual tools, PowerShell integration, and best practices for Access Packages.
         </p>
         <p class="features-subtitle">
           Want to learn more? Check out the <a href="/docs">Docs.</a>

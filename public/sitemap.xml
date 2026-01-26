@@ -4,15 +4,43 @@
     <loc>https://accesspackagebuilder.dev/</loc>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
+    <lastmod>2026-01-26</lastmod>
   </url>
   <url>
     <loc>https://accesspackagebuilder.dev/readiness</loc>
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
+    <lastmod>2026-01-26</lastmod>
   </url>
   <url>
     <loc>https://accesspackagebuilder.dev/docs</loc>
     <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <lastmod>2026-01-26</lastmod>
+  </url>
+  <url>
+    <loc>https://accesspackagebuilder.dev/docs/#/step1_data-quality</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://accesspackagebuilder.dev/docs/#/step2_package-builder</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://accesspackagebuilder.dev/docs/#/step2_1_manual-builder</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://accesspackagebuilder.dev/docs/#/step3_deployment</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://accesspackagebuilder.dev/docs/#/what-are-access-packages</loc>
+    <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>

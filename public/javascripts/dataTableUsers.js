@@ -7,6 +7,7 @@ $(document).ready(function () {
         info: true, // Show table information
         responsive: true, // Make table responsive
         processing: true, // Show processing indicator
+        deferRender: true, // Performance: Only render visible rows
         columnDefs: [
             // Highlight empty cells with red background
             {

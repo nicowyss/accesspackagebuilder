@@ -179,6 +179,112 @@ async function getUserGroups(userId, accessToken) {
   }
 }
 
+/**
+ * Transform group data to the expected format
+ */
+function transformGroupData(group) {
+  let groupTypeLabel = "Unknown";
+  if (Array.isArray(group.groupTypes) && group.groupTypes.includes("DynamicMembership")) {
+    groupTypeLabel = "Dynamic";
+  } else if (Array.isArray(group.groupTypes) && group.groupTypes.includes("Unified")) {
+    groupTypeLabel = "M365";
+  } else if (group.onPremisesSyncEnabled) {
+    groupTypeLabel = "On-Premise";
+  } else if (group.mailEnabled && group.securityEnabled) {
+    groupTypeLabel = "Mail-Security";
+  } else if (group.mailEnabled && !group.securityEnabled) {
+    groupTypeLabel = "Distribution List";
+  } else if (!group.mailEnabled && group.securityEnabled) {
+    groupTypeLabel = "Security";
+  }
+  return {
+    id: group.id,
+    displayName: group.displayName,
+    type: groupTypeLabel,
+  };
+}
+
+/**
+ * Batch request to Microsoft Graph API
+ * Batches up to 20 requests per call with parallel execution
+ */
+async function batchGraphRequests(requests, accessToken) {
+  const BATCH_SIZE = 20;
+  const CONCURRENT_BATCHES = 5;
+  const results = new Map();
+
+  for (let i = 0; i < requests.length; i += BATCH_SIZE * CONCURRENT_BATCHES) {
+    const batchPromises = [];
+
+    for (let j = 0; j < CONCURRENT_BATCHES && (i + j * BATCH_SIZE) < requests.length; j++) {
+      const startIdx = i + j * BATCH_SIZE;
+      const batchRequests = requests.slice(startIdx, startIdx + BATCH_SIZE).map((req, index) => ({
+        id: String(startIdx + index),
+        method: "GET",
+        url: req.url,
+      }));
+
+      if (batchRequests.length > 0) {
+        batchPromises.push(
+          axios.post(
+            "https://graph.microsoft.com/v1.0/$batch",
+            { requests: batchRequests },
+            {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
+              },
+            }
+          ).then(response => response.data.responses)
+           .catch(error => {
+             console.error("Batch request error:", error.message);
+             return [];
+           })
+        );
+      }
+    }
+
+    const batchResults = await Promise.all(batchPromises);
+    for (const responses of batchResults) {
+      for (const resp of responses) {
+        results.set(resp.id, resp);
+      }
+    }
+  }
+
+  return results;
+}
+
+/**
+ * Fetch groups for multiple users using parallel batch requests
+ */
+async function getUserGroupsBatched(users, accessToken) {
+  const requests = users.map((user, index) => ({
+    url: `/users/${user.id}/memberOf?$select=id,displayName,groupTypes,mailEnabled,securityEnabled,onPremisesSyncEnabled`,
+    userId: user.id,
+    index: index,
+  }));
+
+  const responses = await batchGraphRequests(requests, accessToken);
+  const userGroupsMap = new Map();
+
+  for (const [id, response] of responses) {
+    const user = users[parseInt(id)];
+    if (!user) continue;
+
+    if (response.status === 200 && response.body && response.body.value) {
+      const groups = response.body.value
+        .filter(g => g["@odata.type"] === "#microsoft.graph.group")
+        .map(transformGroupData);
+      userGroupsMap.set(user.id, groups);
+    } else {
+      userGroupsMap.set(user.id, []);
+    }
+  }
+
+  return userGroupsMap;
+}
+
 async function getGroupMembershipAnalyzer(groupId, accessToken) {
   let members = [];
   let nextLink = `https://graph.microsoft.com/v1.0/groups/${groupId}/members?$select=id,accountEnabled,userType,displayName,department,officeLocation,companyName,country,userPrincipalName`;
@@ -204,63 +310,70 @@ async function getGroupMembershipAnalyzer(groupId, accessToken) {
   }
 }
 
-// Main function to list users and their groups
+// Optimized function to list users and their groups using batch API
 async function listUsersAndGroups(accessToken) {
+  console.log("⏱️  Fetching user list...");
   const users = await getUsersList(accessToken);
+  console.log(`   Found ${users.length} users`);
+
   const userGroups = [];
-  const chunkSize = 50;
-  for (let i = 0; i < users.length; i += chunkSize) {
-    const userChunk = users.slice(i, i + chunkSize);
+  const CHUNK_SIZE = 100;
 
-    const chunkResults = await Promise.all(
-      userChunk.map(async (user) => {
-        const groups = await getUserGroups(user.id, accessToken);
-        return {
-          userId: user.id,
-          userAccountEnabled: user.accountEnabled,
-          userType: user.userType,
-          displayName: user.displayName,
-          department: user.department,
-          companyName: user.companyName,
-          groups: groups.map((group) => ({
-            id: group.id,
-            displayName: group.displayName,
-            type: group.type,
-          })),
-        };
-      })
-    );
+  console.log("⏱️  Fetching groups with parallel batch API...");
 
-    userGroups.push(...chunkResults);
+  for (let i = 0; i < users.length; i += CHUNK_SIZE) {
+    const userChunk = users.slice(i, i + CHUNK_SIZE);
+
+    const userGroupsMap = await getUserGroupsBatched(userChunk, accessToken);
+
+    for (const user of userChunk) {
+      userGroups.push({
+        userId: user.id,
+        userAccountEnabled: user.accountEnabled,
+        userType: user.userType,
+        displayName: user.displayName,
+        department: user.department,
+        companyName: user.companyName,
+        groups: userGroupsMap.get(user.id) || [],
+      });
+    }
+
+    const progress = Math.min(i + CHUNK_SIZE, users.length);
+    console.log(`   Processed ${progress}/${users.length} users (${Math.round(progress / users.length * 100)}%)`);
   }
+
   return userGroups;
 }
 
 async function getGroupListAndTotalMembers(accessToken) {
   const users = await getUsersList(accessToken);
   const groupCounts = {};
+  const CHUNK_SIZE = 100;
 
-  const chunkSize = 50;
-  for (let i = 0; i < users.length; i += chunkSize) {
-    const userChunk = users.slice(i, i + chunkSize);
+  console.log("⏱️  Fetching group list with batch API...");
 
-    await Promise.all(
-      userChunk.map(async (user) => {
-        const groups = await getUserGroups(user.id, accessToken);
-        groups.forEach((group) => {
-          if (groupCounts[group.id]) {
-            groupCounts[group.id].count += 1;
-          } else {
-            groupCounts[group.id] = {
-              id: group.id,
-              displayName: group.displayName,
-              groupType: group.type,
-              count: 1,
-            };
-          }
-        });
-      })
-    );
+  for (let i = 0; i < users.length; i += CHUNK_SIZE) {
+    const userChunk = users.slice(i, i + CHUNK_SIZE);
+    const userGroupsMap = await getUserGroupsBatched(userChunk, accessToken);
+
+    for (const user of userChunk) {
+      const groups = userGroupsMap.get(user.id) || [];
+      groups.forEach((group) => {
+        if (groupCounts[group.id]) {
+          groupCounts[group.id].count += 1;
+        } else {
+          groupCounts[group.id] = {
+            id: group.id,
+            displayName: group.displayName,
+            groupType: group.type,
+            count: 1,
+          };
+        }
+      });
+    }
+
+    const progress = Math.min(i + CHUNK_SIZE, users.length);
+    console.log(`   Processed ${progress}/${users.length} users (${Math.round(progress / users.length * 100)}%)`);
   }
 
   // Sort groups by count DESC (highest first)
@@ -428,6 +541,7 @@ module.exports = {
   getUserInfo,
   getUsersList,
   getUserGroups,
+  getUserGroupsBatched,
   listUsersAndGroups,
   getIdentityGovernanceStatus,
   getGroupListAndTotalMembers,
