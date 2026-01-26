@@ -28,7 +28,6 @@ A web application designed to simplify the visualization and management of acces
 - [Improve Mobile Version View] 
 - [Integrate Change of SOA Topics]
 - [RBAC Role Mapping]
-- [Google Search Console SEO Opt]
 - [Secure Application Instrumentation Key from Frontend - Key is visible]
 - [Export Options - Reports in Excel/PDF for management presentations]
 - [Marketing - Youtube Video, LinkedIN, REDDIT]
