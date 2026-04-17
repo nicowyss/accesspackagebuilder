@@ -15,23 +15,23 @@ jobs:
     environment: production  # Requires manual approval
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: 20  # Adjust to your Node.js version
+        node-version: 22  # Updated from Node.js 20
 
     - name: Install dependencies
       run: npm ci  # Cleaner, faster, and more reliable than "npm install"
 
     - name: Login to Azure
-      uses: azure/login@v1
+      uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v2
+      uses: azure/webapps-deploy@v3
       with:
         app-name: "accesspackagebuilder"
         package: .  # Deploys the entire app

@@ -10,7 +10,7 @@ A web application designed to simplify the visualization and management of acces
 ![GitHub Issues](https://img.shields.io/github/issues/nicowyss/accesspackagebuilder)
 ![GitHub Contributors](https://img.shields.io/github/contributors/nicowyss/accesspackagebuilder)
 ![GitHub License](https://img.shields.io/github/license/nicowyss/accesspackagebuilder)
-![Node.js Version](https://img.shields.io/badge/Node.js-20-green)
+![Node.js Version](https://img.shields.io/badge/Node.js-22-green)
 ![Azure Entra ID](https://img.shields.io/badge/Entra%20ID-Supported-purple)
 
 ## Features  
